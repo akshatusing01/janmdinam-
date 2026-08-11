@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "description": "Canonical structure for the extracted WhatsApp monthly historical archive. Populate from the existing monthly reports; never invent missing facts.",
+  "months": [
+    {
+      "month": "YYYY-MM",
+      "label": "MONTH YEAR",
+      "summary": "",
+      "statistics": {"total_messages":0,"akshat_messages":0,"purvi_messages":0,"active_days":0,"most_active_day":"","most_active_day_messages":0},
+      "timeline": [],
+      "important_phrases": [],
+      "nicknames": [],
+      "repeated_words": [],
+      "love_mentions": [],
+      "significant_conversations": [],
+      "events": [],
+      "notable_messages": [],
+      "raw_report_reference": ""
+    }
+  ]
+}
