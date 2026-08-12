@@ -18,100 +18,79 @@ Historical monthly material is intentionally not duplicated inside F1/T2.
 
 `RAW SOURCE → VERIFIED FACTS → PATTERNS → CREATIVE CANDIDATES → EXPLICIT PRODUCT DECISIONS → UI/UX → ARCHITECTURE → IMPLEMENTATION → QA → DEPLOYMENT`
 
-## Historical source rule
+## Current product — ISHVERSE
 
-All historical claims must be read from `HISTORY/`. Exact quotes require source verification. Uncertain/deleted material must remain marked unavailable rather than invented.
+ISHVERSE is a magical birthday universe + interactive celebration + personal world. The design target is luxury + magical + cute + cinematic + playful + highly interactive, with birthday celebration first and personal content controlled by the creator.
 
-## CURRENT BUILD DIRECTION — ISHVERSE
+## Protected elements
 
-The user wants the website to create an exceptional reaction: a birthday experience that feels unlike a normal website.
+The user explicitly requested that the **countdown** and **cake-cutting ceremony** remain unchanged/protected.
 
-Canonical direction:
+Everything after/around those elements is available for redesign.
 
-**ISHVERSE = magical birthday universe + interactive celebration + personal world.**
-
-Target qualities:
-
-- luxury
-- magical
-- cute
-- cinematic
-- playful
-- highly interactive
-- birthday celebration first
-- Purvi's personality second
-- cinematic emotion third
-
-The UI itself should feel like a birthday gift rather than a website containing birthday content.
-
-## Opening / ceremony
+## Current redesigned flow
 
 ```text
-LOCKED COUNTDOWN
-      ↓
-MIDNIGHT UNLOCK — 13 AUGUST 2026 00:00 IST
-      ↓
-INTERACTIVE BUTTERSCOTCH CAKE CEREMONY
-      ↓
-MAKE A WISH
-      ↓
-EXTINGUISH CANDLES
-      ↓
-CUT CAKE
-      ↓
-CELEBRATION
-      ↓
-ENTER ISHVERSE
+LOCKED COUNTDOWN [PROTECTED]
+        ↓
+MIDNIGHT REVEAL [REDESIGNED]
+        ↓
+CAKE CEREMONY [PROTECTED]
+        ↓
+ISHVERSE HUB [REDESIGNED]
+        ↓
+EXPLORE ROOMS
+   ├── HER UNIVERSE
+   ├── MEMORY SKY
+   ├── HEAR ME
+   ├── THE CINEMA
+   ├── THE LETTER ROOM
+   └── THE DAWN
 ```
 
-### Cake ceremony implementation priorities
+## Redesigned UI — implemented
 
-1. Cinematic cake arrival.
-2. Interactive candle lighting.
-3. Quiet make-a-wish interaction.
-4. Reliable tap-to-extinguish candles; microphone blow detection is optional later.
-5. Drag-to-cut cake interaction.
-6. Celebration/confetti.
-7. Transition from candle smoke/light into ISHVERSE.
-8. Optional manual cake-review input, if implemented, must preserve exactly what the user enters and must not be AI-generated.
+### Midnight reveal
 
-Butterscotch is the chosen cake concept. Do not claim it is Purvi's favourite cake unless separately verified; documented source material supports butterscotch as an ice-cream preference.
+Replaced the simple unlock screen with a magical reveal using:
+- orbital glow
+- drifting particles
+- large “13” visual
+- script-style ceremonial line
+- ISHVERSE reveal copy
+- cinematic entry button
 
-## ISHVERSE structure
+### ISHVERSE hub
 
-The Personal World should behave as an explorable environment, not a grid of generic cards.
+Replaced the generic card dashboard with an explorable **portal map**.
+Each room is represented as a circular portal positioned around a night-universe landscape.
 
-Core areas:
+Portals:
+- Her Universe
+- Memory Sky
+- Hear Me
+- The Cinema
+- The Letter Room
+- The Dawn
 
-- 🌹 Her Universe
-- 🧠 Memory Constellation
-- 🎧 Voice Notes / “Hear Me”
-- 🎬 The Cinema / Video Edits
-- 💌 Letters / manual messages
-- 🦖 Secret Easter Eggs
-- 🌅 Finale / sunrise transformation
+### Her Universe
 
-### Her Universe visual interactions
+Rebuilt as an object-oriented interactive room instead of a favourites grid.
+Objects are based on documented preference motifs, used selectively:
+- black rose
+- moon/night
+- mountains
+- sunrise
+- painting
+- dance/movement
+- dinosaur Easter egg
+- teddy
 
-Use documented likes as design language, selectively:
+No unsupported personal claims are generated.
 
-- black → premium base
-- black rose → living visual element
-- moon/night → atmosphere
-- mountains → distant landscape
-- sunrise/sunshine → ending transformation
-- painting → creative interaction
-- Bharatanatyam/dance → graceful motion language
-- dinosaur → playful Easter egg
-- teddy/dolls → cute collectible interaction
-- romantic music → emotional layer
-- butterscotch → cake ceremony concept
+### Memory Sky
 
-Do not turn these into a flat “favourites list.”
-
-## MEMORY CONSTELLATION — LOCKED EMPTY
-
-The Memory Constellation must currently contain **only empty monthly sections**:
+Contains exactly 14 empty chapters:
 
 - June 2025
 - July 2025
@@ -128,75 +107,61 @@ The Memory Constellation must currently contain **only empty monthly sections**:
 - June 2026
 - July 2026
 
-No memories are to be inserted by the assistant.
+They remain empty by default. Creator can add/edit manually. Assistant does not invent memories.
 
-When the creator later supplies a memory, provide an editable/manual entry flow and preserve creator-supplied content.
+### Hear Me
 
-## MANUAL PERSONAL-CONTENT RULE — LOCKED
+Rebuilt as a dedicated voice-note room with manual title/audio URL fields and playback preview.
 
-The assistant must not write personal letters, birthday messages, memory descriptions, voice-note captions, video captions, or other intimate content on the creator's behalf.
+### The Cinema
 
-Provide editable placeholders/editors instead.
+Rebuilt as a dedicated video room with manual title/video URL fields and playback preview.
 
-Creator-owned media to be inserted later:
+### The Letter Room
 
-- voice notes
-- video edits
-- special messages / letters
+Rebuilt as a paper-like manual editor. The creator writes the actual personal message; the assistant does not generate it.
 
-Historical content must be verified from `HISTORY/` before use.
+### The Dawn
 
-## Emotional progression
+Rebuilt as the visual finale placeholder, using the sunrise/sunshine preference as a transformation motif. Final content remains creator-controlled.
 
-The overall world should move from:
+## Content constraints — still locked
 
-**night → midnight magic → celebration → exploration → emotional intimacy → sunrise**
+- No assistant-generated personal letters.
+- No assistant-generated special messages.
+- No assistant-generated memory descriptions.
+- No fabricated historical quotes.
+- No fabricated media captions.
+- Memory Sky remains empty until creator supplies/verifies content.
+- Historical content must come from `HISTORY/` and be verified.
 
-The ending should use sunrise/sunshine as a transformation motif because it is associated with Purvi's documented preferences.
+## Build state
 
-## Current implementation state
-
-Initial shell exists at repository root:
+Updated root files:
 
 - `index.html`
 - `styles.css`
 - `app.js`
 
-The current shell includes the initial countdown, unlock, candle/cake, wish, Personal World, empty month sections and manual content editors. The next implementation pass should evolve this into the richer ISHVERSE direction.
+The countdown and cake-cutting implementation were intentionally preserved while the rest of the UX was redesigned.
 
-## 2-hour build priority
+## Known next refinements
 
-1. Build the complete path end-to-end.
-2. Make the cake ceremony the first showcase feature.
-3. Create the ISHVERSE environment.
-4. Connect manual content slots for creator-owned media/messages.
-5. Keep Memory Constellation empty.
-6. Add verified source material only when explicitly selected.
-7. QA mobile.
-8. Deploy.
-
-Do not spend the entire sprint polishing a single scene while the journey is incomplete.
-
-## Next step
-
-**STEP 3 — Implement the richer ISHVERSE visual direction, beginning with the interactive cake ceremony and its transition into the Personal World.**
+1. Improve portal motion and touch feedback.
+2. Add richer object animations in Her Universe.
+3. Replace prompt-based memory editing with an inline creator editor.
+4. Add more robust creator media handling.
+5. Deepen Dawn/finale transition.
+6. Mobile QA for portal hit areas, room spacing, media playback and transitions.
 
 ## Continuity log
 
-### 2026-08-12 — ISHVERSE direction recorded
-- Reframed the experience as a magical birthday universe + interactive celebration + personal world.
-- Locked the countdown → midnight → cake → wish → cake cutting → ISHVERSE opening sequence.
-- Locked empty Memory Constellation months June 2025 through July 2026.
-- Locked manual-only handling of personal letters/messages/memories/media captions.
-- Established cake ceremony as first showcase interaction and quality bar.
+### 2026-08-12 — Post-cake redesign
+- Preserved countdown and cake-cutting ceremony.
+- Redesigned everything else in the journey.
+- Replaced dashboard with explorable ISHVERSE portal map.
+- Redesigned midnight reveal, Her Universe, Memory Sky, Hear Me, The Cinema, Letter Room and Dawn.
+- Preserved empty month requirement and manual-only personal content rule.
 
 ### Future entries
-After every major build step, append:
-- current state
-- what changed
-- decisions
-- rejected ideas
-- known issues
-- next step
-
-Major locked product decisions also belong in F1.
+After every major build step, append current state, what changed, decisions, rejected ideas, known issues, and next step.
