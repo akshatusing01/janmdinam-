@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20260812-r1">
+<link rel="stylesheet" href="mobile.css?v=20260812-r2">
 </head>
 <body>
 <main id="app">
@@ -16,20 +17,16 @@
   <div class="stars"></div><div class="moon moon-a"></div><div class="moon moon-b"></div>
   <div class="opening-copy"><span class="eyebrow">A little universe is waiting</span><h1>Shhh…<br><em>wait for midnight.</em></h1><p>Something magical unlocks on your birthday.</p><div id="countdown" class="countdown"></div><div class="date-line">13 · 08 · 2026 · 00:00 IST</div><button id="tempUnlock" class="text-button">🪄 Temporary unlock</button></div>
 </section>
-
 <section id="unlockScreen" class="screen hidden-screen reveal-screen">
   <div class="reveal-orbit"></div><div class="sparkle-field">✦　·　✧　　·　✦</div>
   <div class="reveal-card"><span class="eyebrow">MIDNIGHT REVEAL</span><div class="reveal-symbol">✦</div><p class="script">finally…</p><h2>HAPPY<br><em>BIRTHDAY, ISHU.</em></h2><p>The night is yours. Come see what is hiding inside it.</p><button class="primary" data-go="cakeScreen">ENTER THE MAGIC <span>→</span></button></div>
 </section>
-
 <section id="cakeScreen" class="screen hidden-screen cake-screen">
   <div class="cake-stars"></div><div class="ceremony-head"><span class="eyebrow">THE CEREMONY</span><h2>One cake.<br><em>One wish.</em></h2><p>Light the candles. Make a wish. Cut the cake.</p></div>
   <div id="cakeWrap" class="cake-wrap"><div class="cake-aura"></div><div class="cake-plate"></div><div class="cake"><div class="cake-top"></div><div class="cake-side"></div><i class="drip d1"></i><i class="drip d2"></i><i class="drip d3"></i><b class="cake-name">ISHU</b><b class="cake-age">15</b><i class="candle c1"><b></b></i><i class="candle c2"><b></b></i><i class="candle c3"><b></b></i><i class="candle c4"><b></b></i></div></div>
   <div class="cake-actions"><button id="lightBtn" class="primary">Light the candles ✨</button><button id="wishBtn" class="secondary" disabled>Make a wish</button><button id="cutBtn" class="secondary" disabled>Cut the cake</button></div><p id="cakeStatus" class="status">Your wish stays yours. ♡</p><div id="confetti" class="confetti"></div>
 </section>
-
 <section id="celebrationScreen" class="screen hidden-screen finale-screen"><div class="finale-ring"></div><span class="eyebrow">THE CAKE HAS BEEN CUT</span><h2>Happy birthday,<br><em>ISHU.</em></h2><p>Your universe is ready to open.</p><button class="primary giant" data-go="partyScreen">OPEN ISHVERSE ✦</button></section>
-
 <section id="partyScreen" class="screen hidden-screen universe-screen">
   <div class="universe-bg"><div class="big-moon"></div><div class="mountain m1"></div><div class="mountain m2"></div><div class="horizon-glow"></div></div>
   <header class="universe-header"><div><span class="eyebrow">13 AUG 2026 · THE PERSONAL UNIVERSE</span><h2>ISH<span>VERSE</span></h2></div><div class="age-orbit"><span>15</span></div></header>
@@ -39,12 +36,11 @@
     <button class="portal portal-memory" data-panel="memoryPanel"><span class="portal-icon">✦</span><strong>Memory Sky</strong><small>fourteen empty constellations</small></button>
     <button class="portal portal-voice" data-panel="voicePanel"><span class="portal-icon">◖</span><strong>Hear Me</strong><small>voice notes</small></button>
     <button class="portal portal-cinema" data-panel="videoPanel"><span class="portal-icon">◉</span><strong>The Cinema</strong><small>video edits</small></button>
-    <button class="portal portal-letter" data-panel="letterPanel"><span class="portal-icon">♡</span><strong>Letter Room</strong><small>a place for your words</small></button>
+    <button class="portal portal-letter" data-panel="letterPanel"><span class="portal-icon">♡</span><strong>Letter Room</strong><small>the main place for your words</small></button>
     <button class="portal portal-dawn" data-panel="dawnPanel"><span class="portal-icon">☼</span><strong>The Dawn</strong><small>the last chapter</small></button>
   </div>
   <p class="universe-footer">made for one birthday · tap a portal to explore</p>
 </section>
-
 <section id="panelScreen" class="screen hidden-screen room-screen"><button id="backBtn" class="back-button">← ISHVERSE</button>
   <div id="herPanel" class="room hidden"><div class="room-hero her-hero"><span class="eyebrow">HER UNIVERSE</span><h2>A room made of <em>little things.</em></h2><p>Interactive motifs, kept playful and personal.</p></div><div class="object-room"><button class="object black-rose">🌹<small>black rose</small></button><button class="object moon-object">☾<small>night / moon</small></button><button class="object mountain-object">⌁<small>mountains</small></button><button class="object sunrise-object">☼<small>sunrise</small></button><button class="object dance-object">♬<small>movement</small></button><button class="object teddy-object">🧸<small>teddy</small></button><button class="object dino-object">🦕<small>tiny easter egg</small></button><button class="object paint-object">◌<small>painting</small></button></div></div>
   <div id="memoryPanel" class="room hidden"><div class="room-hero memory-hero"><span class="eyebrow">MEMORY SKY</span><h2>Fourteen <em>constellations.</em></h2><p>Empty by design. Only creator-supplied memories belong here.</p></div><div id="memoryStatus" class="room-status">Loading…</div><div id="months" class="memory-grid"></div><div id="historicalSource" class="source-panel hidden"><div class="source-head"><div><span class="eyebrow">SOURCE</span><h3 id="sourceTitle">Historical month</h3></div><button id="closeSource" class="secondary">Close</button></div><div id="sourceMeta" class="source-meta"></div><pre id="sourceText"></pre></div></div>
@@ -54,5 +50,5 @@
   <div id="dawnPanel" class="room hidden"><div class="dawn-room"><div class="sunrise"></div><span class="eyebrow">THE DAWN</span><h2>And then… <em>morning.</em></h2><p>The final words and media are left for the creator to place here.</p><div class="dawn-placeholder">YOUR FINAL CHAPTER<br><small>creator-controlled</small></div></div></div>
 </section>
 </main>
-<script src="app.js?v=20260812-r1"></script>
+<script src="app.js?v=20260812-r2"></script>
 </body></html>
