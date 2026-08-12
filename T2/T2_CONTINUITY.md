@@ -4,189 +4,210 @@
 **Repository:** `akshatusing01/janmdinam-`  
 **Last updated:** 2026-08-12
 
-## CURRENT PRIORITY RESET
+## CURRENT PRIORITY
 
-Time is extremely limited. The previous “universe-first” direction is deprioritized.
-
-**Main experience priority:**
+Time is limited. The previous “universe-first” direction is deprioritized.
 
 1. Countdown
 2. Interactive cake-cutting ceremony
 3. BIG playful celebration
-4. Videos / cinema
-5. Manual letter writing
-6. Voice notes
-7. Memory section only as a secondary placeholder
+4. Top birthday dashboard
+5. Videos / cinema
+6. Manual letter writing
+7. Voice notes
+8. Memory Lane — monthly historical extracts + editable memories + month-specific interactions
 
-The experience after the countdown and cake must feel **playful, childish, colorful, celebratory and gift-like**.
+The post-cake experience must remain **playful, childish, colorful, celebratory and gift-like**.
 
 ## LOCKED / DO NOT REDESIGN
 
 ### Countdown
-The countdown remains the opening gate. A **Temporary unlock** button is available for development/demo purposes.
+- Target: `13 August 2026, 00:00 IST`
+- Temporary development unlock remains available.
 
 ### Cake ceremony
-The cake ceremony remains:
+Preserved exactly as the working interaction:
 
 `LIGHT CANDLES → MAKE A WISH → EXTINGUISH → CUT CAKE → CONFETTI`
 
-## POST-CAKE FLOW
+## NEW POST-CAKE STRUCTURE
 
 ```text
 CAKE CUT
    ↓
-BIG CELEBRATION SCREEN
+BIG CELEBRATION
    ↓
-PLAYFUL PARTY ROOM
-   ├── 🎬 MOVIE TIME
-   ├── 💌 OPEN MY LETTER
-   ├── 🎧 HEAR THIS
-   └── ✨ MEMORY JAR
+TOP BIRTHDAY DASHBOARD
+   ├── 🎬 Videos
+   ├── 💌 Letters
+   ├── 🎧 Voice
+   └── ✨ Memories
 ```
 
-## SUPABASE — CONTENT PERSISTENCE IMPLEMENTED
+The old universe/portal presentation is no longer the primary navigation.
 
-Supabase project:
+## DASHBOARD — IMPLEMENTED
 
-- Project ref: `zvvkfevppxjtkziyubvc`
-- Storage bucket: `birthday-media`
-- Bucket is public for serving uploaded media
-- Bucket file-size limit: 500 MB
-- Allowed MIME families: video/*, audio/*, image/*
+The post-celebration screen is now a top-level birthday dashboard with:
 
-### Database tables used by the birthday app
+- sticky dashboard navigation
+- Home
+- Videos
+- Letters
+- Voice
+- Memories
+- playful birthday desk visual language
+- large shortcut cards
+- mobile responsive layout
 
-The existing project already contains dedicated birthday tables:
+A separate `dashboard.css` file contains the new dashboard/memory workspace styles and is loaded dynamically by `app.js`.
 
-- `birthday_media` — media metadata (`kind`, `title`, `url`, `description`, ordering/publication state)
-- `birthday_letters` — manually written letters (`title`, `body`, ordering/publication state)
-- `birthday_memories` — manually written memory entries (`month_id`, `title`, `body`, date/order/publication state)
-- `birthday_months` — the 14 canonical month slots
+## MEMORY LANE — IMPLEMENTED
 
-RLS is enabled and API grants/policies have been configured for the current private birthday app workflow.
+The Memories section is now a monthly historical workspace rather than a simple empty card grid.
 
-### Media flow
+### Canonical month slots
+
+- June 2025
+- July 2025
+- August 2025
+- September 2025
+- October 2025
+- November 2025
+- December 2025
+- January 2026
+- February 2026
+- March 2026
+- April 2026
+- May 2026
+- June 2026
+- July 2026
+
+### Historical source handling
+
+`app.js` now maps month slots to repository `HISTORY/*/MONTH_EXTRACT.md` sources and can load the source extract inside the Memories section.
+
+Currently available repository monthly extracts include:
+
+- `HISTORY/2025-07/MONTH_EXTRACT.md`
+- `HISTORY/2025-08/MONTH_EXTRACT.md`
+- `HISTORY/HISTORY/2025-09/MONTH_EXTRACT.md` (nested legacy folder)
+- `HISTORY/2025-10/MONTH_EXTRACT.md`
+- `HISTORY/2025-11/MONTH_EXTRACT.md`
+- `HISTORY/2025-12/MONTH_EXTRACT.md`
+- `HISTORY/2026-1/MONTH_EXTRACT.md`
+- `HISTORY/2026-2/MONTH_EXTRACT.md`
+- `HISTORY/2026-3/MONTH_EXTRACT.md`
+- `HISTORY/2026-4/MONTH_EXTRACT.md`
+- `HISTORY/2026-5/MONTH_EXTRACT.md`
+- `HISTORY/2026-6/MONTH_EXTRACT.md`
+- `HISTORY/2026-7/MONTH_EXTRACT.md`
+
+June 2025 currently has no matching monthly extract in the repository tree, so the UI leaves it ready for manual memories/source material rather than inventing content.
+
+### July 2025 source-grounded starting point
+
+The first monthly source reviewed is July 2025. The extract states that the available source covers 30/07/25–31/07/25, is a partial month, contains 134 timestamped message lines, has 2 active days, and includes 13 `<Media omitted>` entries. The extract also records school-house/captain coordination and a voice-note exchange around 31/07/25. These source-supported themes are the starting point for future July-specific interactive features; the site must not fabricate missing historical data. fileciteturn53file0L2-L2
+
+## MEMORY CRUD — IMPLEMENTED
+
+Every memory can now be managed from the UI and stored in Supabase.
+
+### Add
+Fields:
+
+- Month
+- Date
+- Time
+- Title
+- Description
+
+### Edit
+Existing memory entries can be opened in the editor and changed.
+
+### Delete
+Each saved memory has a **DELETE** action with confirmation before permanent deletion from Supabase.
+
+### Persistence
+
+The source of truth is `public.birthday_memories` linked to `public.birthday_months`.
+
+No memory content is stored in localStorage.
+
+## SUPABASE CONTENT MODEL
+
+- `birthday_months` — 14 canonical month slots
+- `birthday_memories` — editable memories with month, title, body, date/time label, order and publication state
+- `birthday_media` — video/audio metadata + Supabase Storage URLs
+- `birthday_letters` — manually written letters
+
+Storage bucket:
+
+- `birthday-media`
+
+## MONTH-BY-MONTH FEATURE RULE
+
+Do not build a generic “universe” for every month.
+
+Each month should be developed from its actual `MONTH_EXTRACT.md` source. The workflow is:
 
 ```text
-PHONE / COMPUTER
+READ MONTH_EXTRACT
       ↓
-FILE PICKER
+IDENTIFY REAL EVENTS / THEMES / MEDIA REFERENCES
       ↓
-SUPABASE STORAGE
-birthday-media/video/*
+DESIGN 1–3 PLAYFUL INTERACTIONS FOR THAT MONTH
       ↓
-PUBLIC URL
+CONNECT INTERACTION TO THAT MONTH'S MEMORIES
       ↓
-public.birthday_media
-      ↓
-WEBSITE PLAYER
+NEVER INVENT HISTORICAL FACTS
 ```
 
-Same for voice/audio.
+July 2025 is the first month to receive this treatment. Later months should be added sequentially rather than dumping all historical material into the UI at once.
 
-The database stores the media metadata and canonical URL; Storage stores the actual binary file.
+## CURRENT FRONTEND STATE
 
-### Letter flow
+- Countdown preserved.
+- Cake ceremony preserved.
+- Celebration redesigned.
+- Top dashboard implemented.
+- Memory Lane redesigned.
+- Historical source viewer implemented.
+- Supabase memory add/edit/delete implemented.
+- Media and letters remain Supabase-backed.
+- Temporary unlock is the only remaining localStorage convenience.
 
-```text
-WRITE LETTER
-     ↓
-SAVE MY LETTER
-     ↓
-public.birthday_letters
-     ↓
-LOAD ON NEXT VISIT
-```
+## NEXT BUILD STEPS
 
-Letter content is **no longer stored in localStorage**.
-
-### Memory flow
-
-```text
-SELECT MONTH
-    ↓
-WRITE MEMORY MANUALLY
-    ↓
-public.birthday_memories
-    ↓
-LINKED TO birthday_months
-```
-
-Memory content is **no longer stored in localStorage**.
-
-The 14 month slots remain empty by default and are seeded in `birthday_months`:
-
-June 2025 → July 2026.
-
-No assistant-generated memories are inserted.
-
-## FRONTEND STATE RULE
-
-`localStorage` is still used only for the **temporary development unlock flag**. It is NOT the source of truth for media, letters or memories.
-
-On load, the website reads birthday content from Supabase.
-
-## APP IMPLEMENTATION
-
-`app.js` now:
-
-- uploads video/audio to Supabase Storage
-- writes/updates media records in `birthday_media`
-- loads media records from Supabase on startup
-- writes/loads letters from `birthday_letters`
-- writes/loads memories from `birthday_memories`
-- loads the 14 canonical month slots from `birthday_months`
-- preserves the creator-only writing rule
-
-The frontend uses only the publishable key. No service/secret key is embedded.
-
-## SECURITY NOTE
-
-The publishable browser key is intentionally client-side. RLS is the protection boundary for exposed database tables and Storage operations. The service/secret key must never be placed in the website.
-
-For this private birthday site and current sprint, the media bucket remains public for straightforward playback. Before a broader public launch, review whether authenticated/signed access is preferable.
-
-## CURRENT TECHNICAL STATE
-
-- Countdown target: `2026-08-13T00:00:00+05:30`.
-- Temporary unlock: localStorage only.
-- Cake interaction: client-side and preserved.
-- Video/audio: Supabase Storage + `birthday_media` database metadata.
-- Letter: Supabase `birthday_letters`.
-- Memories: Supabase `birthday_memories` linked to `birthday_months`.
-- No personal content is generated by the assistant.
-
-## NEXT WORK — DO NOT WASTE TIME ON UNIVERSE
-
-1. Test video upload from Android.
-2. Verify video survives refresh/browser reopen.
-3. Verify audio upload/playback.
-4. Verify letter survives refresh/browser reopen.
-5. Verify memory survives refresh/browser reopen.
-6. Add actual creator videos/voice notes.
-7. Write the actual letter manually.
-8. Final mobile polish.
-9. Deploy.
+1. Finish/test July 2025 memory presentation and its first playful interaction.
+2. Move to August 2025.
+3. Continue month-by-month through the available HISTORY extracts.
+4. Add only source-grounded interactions.
+5. Test mobile CRUD: add → reload → edit → reload → delete.
+6. Test source viewer on Android.
+7. Final content insertion and deployment.
 
 ## CONTINUITY LOG
 
 ### 2026-08-12 — Celebration-first reset
-- Explicitly deprioritized the previous universe-heavy concept.
+- Deprioritized the universe-heavy concept.
 - Preserved countdown and cake ceremony.
-- Rebuilt post-cake flow around celebration, videos, letters and playful interaction.
-- Added temporary countdown unlock.
-- Added functional browser media selection.
+- Centered post-cake experience on celebration, videos, letters and playful UI.
 
 ### 2026-08-12 — Supabase media integration
-- Connected the existing birthday Supabase project.
-- Configured `birthday-media` Storage bucket.
-- Added Storage policies for app media operations.
-- Replaced session-only video/audio Object URLs with Supabase Storage uploads and persistent URLs.
-- Kept the frontend on the publishable key only.
+- Connected `birthday-media` Storage.
+- Added database metadata for uploaded media.
+- Kept secret/service credentials out of frontend.
 
 ### 2026-08-12 — All birthday content moved to Supabase
-- Confirmed and reused the existing `birthday_media`, `birthday_letters`, `birthday_memories`, and `birthday_months` database model.
-- Ensured the 14 canonical month slots exist.
-- Configured database grants/RLS policies for the private birthday app workflow.
+- Confirmed `birthday_media`, `birthday_letters`, `birthday_memories`, `birthday_months` as the content model.
 - Removed media/letter/memory persistence from localStorage.
-- Updated `app.js` so Supabase Database is the source of truth for media metadata, letters and memories.
+
+### 2026-08-12 — Dashboard + historical Memory Lane
+- Replaced the previous party-room presentation with a top birthday dashboard.
+- Added month-by-month HISTORY source loading.
+- Started historical integration with July 2025 based strictly on its repository extract.
+- Added Supabase-backed memory CRUD with date, time, title and description.
+- Added edit/delete controls for individual memories.
+- Added a source-extract viewer for each available month.
+- Added responsive playful dashboard/memory styling in `dashboard.css`.
