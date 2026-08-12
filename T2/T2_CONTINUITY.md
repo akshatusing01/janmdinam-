@@ -6,7 +6,7 @@
 
 ## CURRENT PRIORITY RESET
 
-Time is now extremely limited. The previous “universe-first” direction is deprioritized.
+Time is extremely limited. The previous “universe-first” direction is deprioritized.
 
 **Main experience priority:**
 
@@ -18,23 +18,19 @@ Time is now extremely limited. The previous “universe-first” direction is de
 6. Voice notes
 7. Memory section only as a secondary placeholder
 
-The experience after the countdown and cake must feel **playful, childish, colorful, celebratory and gift-like**, not like a luxury portfolio or abstract universe.
+The experience after the countdown and cake must feel **playful, childish, colorful, celebratory and gift-like**.
 
 ## LOCKED / DO NOT REDESIGN
 
 ### Countdown
-The countdown remains the opening gate.
-
-A **Temporary unlock** button is now intentionally available for development/demo purposes so the creator does not need to wait for 00:00 during the sprint.
+The countdown remains the opening gate. A **Temporary unlock** button is available for development/demo purposes.
 
 ### Cake ceremony
-The cake ceremony remains the main interactive ritual:
+The cake ceremony remains:
 
 `LIGHT CANDLES → MAKE A WISH → EXTINGUISH → CUT CAKE → CONFETTI`
 
-Do not replace this interaction with a different concept during the sprint.
-
-## NEW POST-CAKE FLOW
+## POST-CAKE FLOW
 
 ```text
 CAKE CUT
@@ -48,65 +44,42 @@ PLAYFUL PARTY ROOM
    └── ✨ MEMORY JAR
 ```
 
-The party room is the main navigation instead of ISHVERSE/universe exploration.
+## SUPABASE STORAGE — IMPLEMENTED
 
-## IMPLEMENTED — CELEBRATION
+Supabase project:
 
-Added a dedicated celebration screen immediately after cake cutting:
+- Project: `𝐁𝐢𝐫𝐭𝐡𝐝𝐚𝐲 💌`
+- Region: `ap-northeast-1`
+- Project ref: `zvvkfevppxjtkziyubvc`
+- Storage bucket: `birthday-media`
+- Bucket access model: public for serving uploaded media
+- Bucket file-size limit: 500 MB
+- Allowed MIME families: video/*, audio/*, image/*
 
-- oversized birthday typography
-- confetti/party symbols
-- playful pastel background
-- cake/videos/letters mini-status row
-- large “OPEN THE PARTY ROOM” CTA
+The Supabase bucket was configured with Storage RLS policies permitting the birthday app to insert/update/delete objects in `birthday-media`. Supabase documentation notes that uploads require Storage RLS permissions even for public buckets; the public model affects serving/downloading, not upload authorization.
 
-## IMPLEMENTED — PLAYFUL PARTY ROOM
+### App integration
 
-Replaced the previous universe hub as the primary post-cake navigation.
+`app.js` now uploads selected browser files directly to Supabase Storage using the project's publishable key.
 
-Four large childish/playful cards:
+Supported flows:
 
-- 🎬 Movie Time — videos
-- 💌 Open My Letter — manually written letter
-- 🎧 Hear This — voice notes
-- ✨ Memory Jar — manually added memory chapters
+- 🎬 Video picker → upload to `birthday-media/video/...` → public URL → native video player
+- 🎧 Audio picker → upload to `birthday-media/audio/...` → public URL → native audio player
 
-## IMPLEMENTED — FUNCTIONAL VIDEO UPLOAD
+The selected filename and resulting public URL are also kept locally so a refresh can restore the last uploaded media URL on the same device.
 
-The Cinema now has a real browser file picker:
-
-- accepts `video/*`
-- works from phone/computer file picker
-- selected video is displayed in a native `<video controls playsinline>` player
-- uses a temporary browser Object URL
-- shows selected filename
-- no server/backend is required for the local preview
-
-### Important limitation
-The current upload is **session-local browser preview**. It does not permanently upload the video to GitHub or a remote storage service.
-
-For permanent hosting, the next step would be adding Storage/backend infrastructure (e.g. Supabase Storage or another deployment storage layer). Given the current time constraint, local functional upload is the fastest reliable implementation.
+The frontend uses only the **publishable** Supabase key. No service/secret key is embedded in the website.
 
 ## IMPLEMENTED — MANUAL LETTER
 
-The Letter Room now contains:
+The Letter Room contains:
 
 - editable title field
-- large handwriting-style message area
+- large message area
 - explicit SAVE MY LETTER button
 - local-device persistence
 - no AI-generated personal text
-
-The creator writes every word.
-
-## IMPLEMENTED — VOICE NOTE UPLOAD
-
-Added the same functional local browser file-picker pattern for audio:
-
-- accepts `audio/*`
-- native audio controls
-- selected filename
-- session-local Object URL
 
 ## MEMORY RULE — STILL LOCKED
 
@@ -116,39 +89,43 @@ June 2025 → July 2026.
 
 No assistant-generated memories are inserted.
 
-## FILES UPDATED IN THIS STEP
+## CURRENT TECHNICAL STATE
 
-- `index.html`
-- `app.js`
-- `styles.css`
+- Countdown target: `2026-08-13T00:00:00+05:30`.
+- Temporary unlock: localStorage.
+- Cake interaction: client-side.
+- Video/audio: Supabase Storage upload + public playback URL.
+- Letter: localStorage.
+- Memory entries: manual/local.
 
-## CURRENT TECHNICAL NOTES
+## SECURITY NOTE
 
-- Countdown target remains `2026-08-13T00:00:00+05:30`.
-- Temporary unlock is persisted in localStorage for the development device.
-- Cake interaction remains client-side.
-- Video/audio uploads use browser Object URLs.
-- Letter text is stored in localStorage.
-- Memory entries are still manual/local.
+The publishable browser key is intentionally client-side. Storage access is controlled by Supabase policies. The Supabase service/secret key must never be put into the website.
+
+Before final public deployment, review Storage policies/advisors and decide whether the bucket should remain public or become private with authenticated/signed access. For this private birthday site and short sprint, public media URLs are being used for simplicity.
 
 ## NEXT WORK — DO NOT WASTE TIME ON UNIVERSE
 
-1. Test the actual deployed page on Android.
-2. Verify temporary unlock.
-3. Verify cake → celebration transition.
-4. Verify video upload and playback.
-5. Verify letter typing/saving.
-6. Add actual creator media/content.
-7. Only after that consider permanent storage if time remains.
+1. Test upload from Android.
+2. Verify uploaded video survives refresh.
+3. Verify audio upload/playback.
+4. Add actual creator videos/voice notes.
+5. Write the actual letter manually.
+6. Final mobile polish.
+7. Deploy.
 
 ## CONTINUITY LOG
 
 ### 2026-08-12 — Celebration-first reset
-- Explicitly deprioritized the previous universe-heavy concept due to limited time.
+- Explicitly deprioritized the previous universe-heavy concept.
 - Preserved countdown and cake ceremony.
-- Rebuilt everything after cake around celebration, videos, letters and playful interaction.
-- Added temporary countdown unlock for development.
-- Added functional browser video upload/playback.
-- Added functional browser audio upload/playback.
-- Added manual letter editor with local persistence.
-- Replaced universe hub with playful birthday party room.
+- Rebuilt post-cake flow around celebration, videos, letters and playful interaction.
+- Added temporary countdown unlock.
+- Added functional browser media selection.
+
+### 2026-08-12 — Supabase media integration
+- Connected the existing birthday Supabase project.
+- Created/configured `birthday-media` Storage bucket.
+- Added Storage policies for app media uploads/updates/deletes.
+- Replaced session-only video/audio Object URLs with Supabase Storage uploads and persistent public URLs.
+- Kept the frontend on the publishable key only.
