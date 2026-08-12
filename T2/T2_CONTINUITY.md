@@ -4,215 +4,102 @@
 **Repository:** `akshatusing01/janmdinam-`  
 **Last updated:** 2026-08-12
 
-## Read this first
+## Current repository model
 
-This is an existing project. Do not treat it as a fresh build.
+- `F1/F1_MASTER_BRAIN.md` = project decisions + canonical project state
+- `T2/T2_CONTINUITY.md` = current workstream continuity
+- `HISTORY/` = actual monthly historical extracts
+- `PERSONAL_ARCHIVE.md` = stable personal/source information
+- `SOURCE_DOCUMENT.md` = source priority + extraction rules
 
-The repository is now split conceptually into:
-
-- **Project brain:** `F1/F1_MASTER_BRAIN.md`
-- **Personal/source archive:** `PERSONAL_ARCHIVE.md`
-- **Historical monthly extracts:** `HISTORY/`
-- **Source/index rules:** `SOURCE_DOCUMENT.md`
-
-Historical monthly material is intentionally no longer duplicated inside F1/T2.
-
-## Current priority
-
-**Do NOT jump into coding.**
-
-Next work unit:
-
-> **BIRTHDAY EXPERIENCE RECONSTRUCTION — COMPLETE JOURNEY**
-
-First determine exactly what Purvi experiences from opening to finale using the monthly source material.
+Historical monthly material is intentionally not duplicated inside F1/T2.
 
 ## Memory hierarchy
 
-```text
-RAW MONTHLY SOURCE
-        ↓
-VERIFIED FACTS
-        ↓
-PATTERNS / INTERPRETATION
-        ↓
-CREATIVE EXPERIENCE CANDIDATES
-        ↓
-EXPLICIT PRODUCT DECISIONS
-        ↓
-UI / UX
-        ↓
-TECHNICAL ARCHITECTURE
-        ↓
-IMPLEMENTATION
-        ↓
-QA
-        ↓
-DEPLOYMENT
-```
+`RAW SOURCE → VERIFIED FACTS → PATTERNS → CREATIVE CANDIDATES → EXPLICIT PRODUCT DECISIONS → UI/UX → ARCHITECTURE → IMPLEMENTATION → QA → DEPLOYMENT`
 
 ## Historical source rule
 
-All historical claims must be read from the relevant file under `HISTORY/`.
+All historical claims must be read from `HISTORY/`. Exact quotes require source verification. Uncertain/deleted material must remain marked unavailable rather than invented.
 
-Do not rely on remembered summaries from F1/T2.
+## 2026-08-12 — UI/UX and build direction
 
-For an exact quote, locate the raw source or exact monthly extract.
+The user approved a new core opening direction:
 
-For an uncertain date, cross-check the relevant month(s).
+`LOCKED COUNTDOWN → MIDNIGHT UNLOCK → INTERACTIVE CAKE CEREMONY → MAKE A WISH → PERSONAL WORLD`
 
-For deleted/unavailable content, mark it unavailable rather than inventing it.
+The creator has voice notes, video edits, and special messages that will later be placed into the experience.
 
-## Monthly folder convention
+### Proposed Personal World areas
 
-Every month should be stored independently:
+- Her Universe
+- Memory Constellation
+- Voice Notes
+- The Cinema / Video Edits
+- Letters
+- Finale
 
-```text
-HISTORY/
-├── 2025-06/
-│   └── MONTH_EXTRACT.md
-├── 2025-07/
-│   └── MONTH_EXTRACT.md
-├── 2025-08/
-│   └── MONTH_EXTRACT.md
-├── 2025-09/
-│   └── MONTH_EXTRACT.md
-├── 2025-10/
-│   └── MONTH_EXTRACT.md
-├── 2025-11/
-│   └── MONTH_EXTRACT.md
-├── 2025-12/
-│   └── MONTH_EXTRACT.md
-└── ...
-```
+These are implementation directions, not permission to invent personal content.
 
-See `SOURCE_DOCUMENT.md` for the recommended extraction format.
+### Explicit user constraints
 
-## Latest conversation — 2026-08-12
+1. **Memory Constellation must stay empty for now.** It must contain monthly sections from **June 2025 through July 2026**, with no memories prefilled by the assistant.
+2. **Never write personal letters on the user's behalf.** Provide an editor/input area only.
+3. Apply the same manual-entry principle to memories and other personal content: placeholders/editors first, user-supplied content later.
+4. Do not manufacture historical events, quotes, emotional messages, or media captions.
+5. Historical material, when added, must come from `HISTORY/` and be verified.
 
-### User request: remove historical summaries from continuity brain
+## Step 2 — Initial UI shell completed
 
-The user explicitly asked to erase the **important shared memories and monthly historical archive** from the continuity layer and asked for the correct way to manually place every month's extract into the repository so the assistant can read and use it for the website.
+Files added:
 
-### Action taken
+- `index.html`
+- `styles.css`
+- `app.js`
+- `T2/STEP_2_BUILD_STATE.md`
 
-- F1 was rewritten so it no longer contains monthly historical summaries, shared-memory/story summaries, nicknames, historical events, or reconstructed relationship memories.
-- T2 was rewritten so it no longer duplicates monthly history and instead defines the `HISTORY/YYYY-MM/` archive convention.
-- `SOURCE_DOCUMENT.md` was updated to define the monthly extraction format and source-of-truth workflow.
-- `PERSONAL_ARCHIVE.md` remains the separate personal/source-information layer.
+The shell currently provides:
 
-### Agreed repository model
+- locked countdown to `13 August 2026 00:00 IST`
+- midnight unlock scene
+- cinematic black / moon / mountain atmosphere
+- interactive candle-lighting cake ceremony
+- wish interaction
+- Personal World navigation
+- Her Universe motif section
+- 14 empty Memory Constellation month sections
+- manual memory entry interaction
+- manual voice-note title/URL editor
+- manual video title/URL editor
+- manual letter title/body editor
+- localStorage persistence for manually entered content
+- responsive mobile-first UI
+- finale placeholder
 
-```text
-F1/                    = project decisions + canonical project state
-T2/                    = current workstream / transfer continuity
-HISTORY/YYYY-MM/       = actual monthly historical extracts
-PERSONAL_ARCHIVE.md    = stable personal/source information
-SOURCE_DOCUMENT.md     = source priority + extraction rules
-```
+The UI does **not** contain generated personal letters or fabricated historical memories.
 
-### Recommended monthly file
+## Build priority for the 2-hour sprint
 
-For each month, create:
+1. Get the complete journey rendering and navigable.
+2. Polish the visual system and transitions.
+3. Keep all personal-content slots manually editable.
+4. Add only verified source material when explicitly requested.
+5. QA on mobile.
+6. Deploy.
 
-`HISTORY/YYYY-MM/MONTH_EXTRACT.md`
+## Current next step
 
-The extract should ideally contain:
+**STEP 3 — Polish the complete cinematic journey and improve transitions/navigation while preserving the manual-content rule.**
 
-- source information
-- monthly statistics
-- firsts / milestones
-- nicknames / special words / phrases
-- important conversations
-- events / memories
-- media index
-- funny / chaotic moments
-- inside jokes / callbacks
-- people
-- places
-- achievements / milestones
-- profile updates
-- relationship evolution as observed, not invented interpretation
-- cross-month references
-- date conflicts / uncertainty
-- sensitive-material handling notes
-- creative opportunities, explicitly marked as **NOT PRODUCT DECISIONS**
-- human-verification flags
-- monthly summary
+## Continuity rule
 
-Raw chat remains the final authority for exact wording and exact chronology.
+After every major build step, append:
 
-### Optional raw-source organization
+- current state
+- what changed
+- decisions
+- rejected ideas
+- known issues
+- next step
 
-Where appropriate, a month may contain:
-
-```text
-HISTORY/YYYY-MM/
-├── MONTH_EXTRACT.md
-├── RAW_INDEX.md
-└── source/
-    └── original-export.txt
-```
-
-Do not duplicate very large raw sources unnecessarily if they already exist elsewhere; an index/reference is sufficient when possible.
-
-## How historical material will be used for the website
-
-When designing a historical beat, the builder/assistant should:
-
-1. Identify the relevant month(s).
-2. Read the monthly extract from `HISTORY/YYYY-MM/`.
-3. Locate the raw source when exact wording, chronology, or media context matters.
-4. Separate verified history from interpretation.
-5. Mark uncertain material rather than filling gaps with imagination.
-6. Convert only approved historical material into an experience candidate.
-7. Keep creative treatment separate from the historical claim.
-
-Therefore the intended pipeline is:
-
-`Monthly history → verification → story/pattern → experience candidate → explicit decision → website`
-
-## Architecture reset
-
-Do not automatically restore the previous Private Digital World implementation, memory graph, vault, simulator, AI memory engine, database-first architecture, or fixed section structure. Those remain historical concepts only.
-
-## Current birthday-experience direction
-
-The experience is still in the reconstruction/design stage. The broad opening direction previously recorded remains:
-
-**Shock → Mystery → Cinematic Opening → Story**
-
-This is not yet a locked storyboard.
-
-The complete journey must be defined before implementation.
-
-## What to do next
-
-1. Add every available monthly extract to `HISTORY/YYYY-MM/`.
-2. Read the relevant month when designing any historical beat.
-3. Build a verified cross-month timeline only when needed.
-4. Reconstruct the complete birthday journey.
-5. Explicitly lock the experience.
-6. Derive UI/UX.
-7. Derive the smallest technical architecture capable of delivering it.
-8. Build.
-9. QA on mobile.
-10. Deploy.
-
-## Change log
-
-### 2026-08-12 — Historical-memory reset
-- Removed monthly historical material from T2.
-- Removed shared-memory/story summaries from T2.
-- Established `HISTORY/YYYY-MM/` as the canonical monthly archive location.
-- Kept T2 focused on current workstream continuity.
-
-### 2026-08-12 — Conversation continuity update
-- Recorded the user's request to preserve the latest project discussion in T2.
-- Recorded the decision to keep monthly history out of F1/T2 and place it in dedicated `HISTORY/YYYY-MM/` folders.
-- Recorded the recommended `MONTH_EXTRACT.md` structure.
-- Recorded how future website work must consume the monthly source material.
-- Reaffirmed F1/T2/source separation and the experience-first development order.
-
-### Future entries
-Append project-state changes, decisions, rejected concepts, architecture changes, QA state, and deployment state. Do not duplicate monthly chat history here.
+Major locked product decisions also belong in F1.
