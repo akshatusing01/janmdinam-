@@ -44,75 +44,129 @@ PLAYFUL PARTY ROOM
    └── ✨ MEMORY JAR
 ```
 
-## SUPABASE STORAGE — IMPLEMENTED
+## SUPABASE — CONTENT PERSISTENCE IMPLEMENTED
 
 Supabase project:
 
-- Project: `𝐁𝐢𝐫𝐭𝐡𝐝𝐚𝐲 💌`
-- Region: `ap-northeast-1`
 - Project ref: `zvvkfevppxjtkziyubvc`
 - Storage bucket: `birthday-media`
-- Bucket access model: public for serving uploaded media
+- Bucket is public for serving uploaded media
 - Bucket file-size limit: 500 MB
 - Allowed MIME families: video/*, audio/*, image/*
 
-The Supabase bucket was configured with Storage RLS policies permitting the birthday app to insert/update/delete objects in `birthday-media`. Supabase documentation notes that uploads require Storage RLS permissions even for public buckets; the public model affects serving/downloading, not upload authorization.
+### Database tables used by the birthday app
 
-### App integration
+The existing project already contains dedicated birthday tables:
 
-`app.js` now uploads selected browser files directly to Supabase Storage using the project's publishable key.
+- `birthday_media` — media metadata (`kind`, `title`, `url`, `description`, ordering/publication state)
+- `birthday_letters` — manually written letters (`title`, `body`, ordering/publication state)
+- `birthday_memories` — manually written memory entries (`month_id`, `title`, `body`, date/order/publication state)
+- `birthday_months` — the 14 canonical month slots
 
-Supported flows:
+RLS is enabled and API grants/policies have been configured for the current private birthday app workflow.
 
-- 🎬 Video picker → upload to `birthday-media/video/...` → public URL → native video player
-- 🎧 Audio picker → upload to `birthday-media/audio/...` → public URL → native audio player
+### Media flow
 
-The selected filename and resulting public URL are also kept locally so a refresh can restore the last uploaded media URL on the same device.
+```text
+PHONE / COMPUTER
+      ↓
+FILE PICKER
+      ↓
+SUPABASE STORAGE
+birthday-media/video/*
+      ↓
+PUBLIC URL
+      ↓
+public.birthday_media
+      ↓
+WEBSITE PLAYER
+```
 
-The frontend uses only the **publishable** Supabase key. No service/secret key is embedded in the website.
+Same for voice/audio.
 
-## IMPLEMENTED — MANUAL LETTER
+The database stores the media metadata and canonical URL; Storage stores the actual binary file.
 
-The Letter Room contains:
+### Letter flow
 
-- editable title field
-- large message area
-- explicit SAVE MY LETTER button
-- local-device persistence
-- no AI-generated personal text
+```text
+WRITE LETTER
+     ↓
+SAVE MY LETTER
+     ↓
+public.birthday_letters
+     ↓
+LOAD ON NEXT VISIT
+```
 
-## MEMORY RULE — STILL LOCKED
+Letter content is **no longer stored in localStorage**.
 
-Fourteen month sections remain empty by default:
+### Memory flow
+
+```text
+SELECT MONTH
+    ↓
+WRITE MEMORY MANUALLY
+    ↓
+public.birthday_memories
+    ↓
+LINKED TO birthday_months
+```
+
+Memory content is **no longer stored in localStorage**.
+
+The 14 month slots remain empty by default and are seeded in `birthday_months`:
 
 June 2025 → July 2026.
 
 No assistant-generated memories are inserted.
 
-## CURRENT TECHNICAL STATE
+## FRONTEND STATE RULE
 
-- Countdown target: `2026-08-13T00:00:00+05:30`.
-- Temporary unlock: localStorage.
-- Cake interaction: client-side.
-- Video/audio: Supabase Storage upload + public playback URL.
-- Letter: localStorage.
-- Memory entries: manual/local.
+`localStorage` is still used only for the **temporary development unlock flag**. It is NOT the source of truth for media, letters or memories.
+
+On load, the website reads birthday content from Supabase.
+
+## APP IMPLEMENTATION
+
+`app.js` now:
+
+- uploads video/audio to Supabase Storage
+- writes/updates media records in `birthday_media`
+- loads media records from Supabase on startup
+- writes/loads letters from `birthday_letters`
+- writes/loads memories from `birthday_memories`
+- loads the 14 canonical month slots from `birthday_months`
+- preserves the creator-only writing rule
+
+The frontend uses only the publishable key. No service/secret key is embedded.
 
 ## SECURITY NOTE
 
-The publishable browser key is intentionally client-side. Storage access is controlled by Supabase policies. The Supabase service/secret key must never be put into the website.
+The publishable browser key is intentionally client-side. RLS is the protection boundary for exposed database tables and Storage operations. The service/secret key must never be placed in the website.
 
-Before final public deployment, review Storage policies/advisors and decide whether the bucket should remain public or become private with authenticated/signed access. For this private birthday site and short sprint, public media URLs are being used for simplicity.
+For this private birthday site and current sprint, the media bucket remains public for straightforward playback. Before a broader public launch, review whether authenticated/signed access is preferable.
+
+## CURRENT TECHNICAL STATE
+
+- Countdown target: `2026-08-13T00:00:00+05:30`.
+- Temporary unlock: localStorage only.
+- Cake interaction: client-side and preserved.
+- Video/audio: Supabase Storage + `birthday_media` database metadata.
+- Letter: Supabase `birthday_letters`.
+- Memories: Supabase `birthday_memories` linked to `birthday_months`.
+- No personal content is generated by the assistant.
 
 ## NEXT WORK — DO NOT WASTE TIME ON UNIVERSE
 
-1. Test upload from Android.
-2. Verify uploaded video survives refresh.
+1. Test video upload from Android.
+2. Verify video survives refresh/browser reopen.
 3. Verify audio upload/playback.
-4. Add actual creator videos/voice notes.
-5. Write the actual letter manually.
-6. Final mobile polish.
-7. Deploy.
+4. Verify letter survives refresh/browser reopen.
+5. Verify memory survives refresh/browser reopen.
+6. Add actual creator videos/voice notes.
+7. Write the actual letter manually.
+8. Final mobile polish.
+9. Deploy.
 
 ## CONTINUITY LOG
 
@@ -125,7 +179,14 @@ Before final public deployment, review Storage policies/advisors and decide whet
 
 ### 2026-08-12 — Supabase media integration
 - Connected the existing birthday Supabase project.
-- Created/configured `birthday-media` Storage bucket.
-- Added Storage policies for app media uploads/updates/deletes.
-- Replaced session-only video/audio Object URLs with Supabase Storage uploads and persistent public URLs.
+- Configured `birthday-media` Storage bucket.
+- Added Storage policies for app media operations.
+- Replaced session-only video/audio Object URLs with Supabase Storage uploads and persistent URLs.
 - Kept the frontend on the publishable key only.
+
+### 2026-08-12 — All birthday content moved to Supabase
+- Confirmed and reused the existing `birthday_media`, `birthday_letters`, `birthday_memories`, and `birthday_months` database model.
+- Ensured the 14 canonical month slots exist.
+- Configured database grants/RLS policies for the private birthday app workflow.
+- Removed media/letter/memory persistence from localStorage.
+- Updated `app.js` so Supabase Database is the source of truth for media metadata, letters and memories.
