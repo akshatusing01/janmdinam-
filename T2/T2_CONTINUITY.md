@@ -4,164 +4,151 @@
 **Repository:** `akshatusing01/janmdinam-`  
 **Last updated:** 2026-08-12
 
-## Current repository model
+## CURRENT PRIORITY RESET
 
-- `F1/F1_MASTER_BRAIN.md` = project decisions + canonical project state
-- `T2/T2_CONTINUITY.md` = current workstream continuity
-- `HISTORY/` = actual monthly historical extracts
-- `PERSONAL_ARCHIVE.md` = stable personal/source information
-- `SOURCE_DOCUMENT.md` = source priority + extraction rules
+Time is now extremely limited. The previous “universe-first” direction is deprioritized.
 
-Historical monthly material is intentionally not duplicated inside F1/T2.
+**Main experience priority:**
 
-## Memory hierarchy
+1. Countdown
+2. Interactive cake-cutting ceremony
+3. BIG playful celebration
+4. Videos / cinema
+5. Manual letter writing
+6. Voice notes
+7. Memory section only as a secondary placeholder
 
-`RAW SOURCE → VERIFIED FACTS → PATTERNS → CREATIVE CANDIDATES → EXPLICIT PRODUCT DECISIONS → UI/UX → ARCHITECTURE → IMPLEMENTATION → QA → DEPLOYMENT`
+The experience after the countdown and cake must feel **playful, childish, colorful, celebratory and gift-like**, not like a luxury portfolio or abstract universe.
 
-## Current product — ISHVERSE
+## LOCKED / DO NOT REDESIGN
 
-ISHVERSE is a magical birthday universe + interactive celebration + personal world. The design target is luxury + magical + cute + cinematic + playful + highly interactive, with birthday celebration first and personal content controlled by the creator.
+### Countdown
+The countdown remains the opening gate.
 
-## Protected elements
+A **Temporary unlock** button is now intentionally available for development/demo purposes so the creator does not need to wait for 00:00 during the sprint.
 
-The user explicitly requested that the **countdown** and **cake-cutting ceremony** remain unchanged/protected.
+### Cake ceremony
+The cake ceremony remains the main interactive ritual:
 
-Everything after/around those elements is available for redesign.
+`LIGHT CANDLES → MAKE A WISH → EXTINGUISH → CUT CAKE → CONFETTI`
 
-## Current redesigned flow
+Do not replace this interaction with a different concept during the sprint.
+
+## NEW POST-CAKE FLOW
 
 ```text
-LOCKED COUNTDOWN [PROTECTED]
-        ↓
-MIDNIGHT REVEAL [REDESIGNED]
-        ↓
-CAKE CEREMONY [PROTECTED]
-        ↓
-ISHVERSE HUB [REDESIGNED]
-        ↓
-EXPLORE ROOMS
-   ├── HER UNIVERSE
-   ├── MEMORY SKY
-   ├── HEAR ME
-   ├── THE CINEMA
-   ├── THE LETTER ROOM
-   └── THE DAWN
+CAKE CUT
+   ↓
+BIG CELEBRATION SCREEN
+   ↓
+PLAYFUL PARTY ROOM
+   ├── 🎬 MOVIE TIME
+   ├── 💌 OPEN MY LETTER
+   ├── 🎧 HEAR THIS
+   └── ✨ MEMORY JAR
 ```
 
-## Redesigned UI — implemented
+The party room is the main navigation instead of ISHVERSE/universe exploration.
 
-### Midnight reveal
+## IMPLEMENTED — CELEBRATION
 
-Replaced the simple unlock screen with a magical reveal using:
-- orbital glow
-- drifting particles
-- large “13” visual
-- script-style ceremonial line
-- ISHVERSE reveal copy
-- cinematic entry button
+Added a dedicated celebration screen immediately after cake cutting:
 
-### ISHVERSE hub
+- oversized birthday typography
+- confetti/party symbols
+- playful pastel background
+- cake/videos/letters mini-status row
+- large “OPEN THE PARTY ROOM” CTA
 
-Replaced the generic card dashboard with an explorable **portal map**.
-Each room is represented as a circular portal positioned around a night-universe landscape.
+## IMPLEMENTED — PLAYFUL PARTY ROOM
 
-Portals:
-- Her Universe
-- Memory Sky
-- Hear Me
-- The Cinema
-- The Letter Room
-- The Dawn
+Replaced the previous universe hub as the primary post-cake navigation.
 
-### Her Universe
+Four large childish/playful cards:
 
-Rebuilt as an object-oriented interactive room instead of a favourites grid.
-Objects are based on documented preference motifs, used selectively:
-- black rose
-- moon/night
-- mountains
-- sunrise
-- painting
-- dance/movement
-- dinosaur Easter egg
-- teddy
+- 🎬 Movie Time — videos
+- 💌 Open My Letter — manually written letter
+- 🎧 Hear This — voice notes
+- ✨ Memory Jar — manually added memory chapters
 
-No unsupported personal claims are generated.
+## IMPLEMENTED — FUNCTIONAL VIDEO UPLOAD
 
-### Memory Sky
+The Cinema now has a real browser file picker:
 
-Contains exactly 14 empty chapters:
+- accepts `video/*`
+- works from phone/computer file picker
+- selected video is displayed in a native `<video controls playsinline>` player
+- uses a temporary browser Object URL
+- shows selected filename
+- no server/backend is required for the local preview
 
-- June 2025
-- July 2025
-- August 2025
-- September 2025
-- October 2025
-- November 2025
-- December 2025
-- January 2026
-- February 2026
-- March 2026
-- April 2026
-- May 2026
-- June 2026
-- July 2026
+### Important limitation
+The current upload is **session-local browser preview**. It does not permanently upload the video to GitHub or a remote storage service.
 
-They remain empty by default. Creator can add/edit manually. Assistant does not invent memories.
+For permanent hosting, the next step would be adding Storage/backend infrastructure (e.g. Supabase Storage or another deployment storage layer). Given the current time constraint, local functional upload is the fastest reliable implementation.
 
-### Hear Me
+## IMPLEMENTED — MANUAL LETTER
 
-Rebuilt as a dedicated voice-note room with manual title/audio URL fields and playback preview.
+The Letter Room now contains:
 
-### The Cinema
+- editable title field
+- large handwriting-style message area
+- explicit SAVE MY LETTER button
+- local-device persistence
+- no AI-generated personal text
 
-Rebuilt as a dedicated video room with manual title/video URL fields and playback preview.
+The creator writes every word.
 
-### The Letter Room
+## IMPLEMENTED — VOICE NOTE UPLOAD
 
-Rebuilt as a paper-like manual editor. The creator writes the actual personal message; the assistant does not generate it.
+Added the same functional local browser file-picker pattern for audio:
 
-### The Dawn
+- accepts `audio/*`
+- native audio controls
+- selected filename
+- session-local Object URL
 
-Rebuilt as the visual finale placeholder, using the sunrise/sunshine preference as a transformation motif. Final content remains creator-controlled.
+## MEMORY RULE — STILL LOCKED
 
-## Content constraints — still locked
+Fourteen month sections remain empty by default:
 
-- No assistant-generated personal letters.
-- No assistant-generated special messages.
-- No assistant-generated memory descriptions.
-- No fabricated historical quotes.
-- No fabricated media captions.
-- Memory Sky remains empty until creator supplies/verifies content.
-- Historical content must come from `HISTORY/` and be verified.
+June 2025 → July 2026.
 
-## Build state
+No assistant-generated memories are inserted.
 
-Updated root files:
+## FILES UPDATED IN THIS STEP
 
 - `index.html`
-- `styles.css`
 - `app.js`
+- `styles.css`
 
-The countdown and cake-cutting implementation were intentionally preserved while the rest of the UX was redesigned.
+## CURRENT TECHNICAL NOTES
 
-## Known next refinements
+- Countdown target remains `2026-08-13T00:00:00+05:30`.
+- Temporary unlock is persisted in localStorage for the development device.
+- Cake interaction remains client-side.
+- Video/audio uploads use browser Object URLs.
+- Letter text is stored in localStorage.
+- Memory entries are still manual/local.
 
-1. Improve portal motion and touch feedback.
-2. Add richer object animations in Her Universe.
-3. Replace prompt-based memory editing with an inline creator editor.
-4. Add more robust creator media handling.
-5. Deepen Dawn/finale transition.
-6. Mobile QA for portal hit areas, room spacing, media playback and transitions.
+## NEXT WORK — DO NOT WASTE TIME ON UNIVERSE
 
-## Continuity log
+1. Test the actual deployed page on Android.
+2. Verify temporary unlock.
+3. Verify cake → celebration transition.
+4. Verify video upload and playback.
+5. Verify letter typing/saving.
+6. Add actual creator media/content.
+7. Only after that consider permanent storage if time remains.
 
-### 2026-08-12 — Post-cake redesign
-- Preserved countdown and cake-cutting ceremony.
-- Redesigned everything else in the journey.
-- Replaced dashboard with explorable ISHVERSE portal map.
-- Redesigned midnight reveal, Her Universe, Memory Sky, Hear Me, The Cinema, Letter Room and Dawn.
-- Preserved empty month requirement and manual-only personal content rule.
+## CONTINUITY LOG
 
-### Future entries
-After every major build step, append current state, what changed, decisions, rejected ideas, known issues, and next step.
+### 2026-08-12 — Celebration-first reset
+- Explicitly deprioritized the previous universe-heavy concept due to limited time.
+- Preserved countdown and cake ceremony.
+- Rebuilt everything after cake around celebration, videos, letters and playful interaction.
+- Added temporary countdown unlock for development.
+- Added functional browser video upload/playback.
+- Added functional browser audio upload/playback.
+- Added manual letter editor with local persistence.
+- Replaced universe hub with playful birthday party room.
