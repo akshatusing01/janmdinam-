@@ -4,97 +4,70 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#050505" />
-  <title>For Purvi — 13 August 2026</title>
-  <meta name="description" content="A private birthday experience made for Purvi." />
+  <title>ISHVERSE — 13 August 2026</title>
+  <meta name="description" content="A private birthday universe made for Purvi." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="ambient" aria-hidden="true"></div>
+<div id="ambient" aria-hidden="true"></div>
+<main id="app">
+  <section id="lockScreen" class="screen active hero-screen">
+    <div class="stars" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div><div class="mountains" aria-hidden="true"></div>
+    <div class="lock-card">
+      <span class="eyebrow">ISHVERSE · sealed until midnight</span>
+      <div class="lock-mark">✦</div><h1>Not yet.</h1>
+      <p class="muted">Something made just for you is waiting.</p>
+      <div id="countdown" class="countdown" aria-live="polite"></div><div class="date-line">13 · 08 · 2026</div>
+    </div>
+  </section>
 
-  <main id="app">
-    <section id="lockScreen" class="screen active">
-      <div class="moon" aria-hidden="true"></div>
-      <div class="mountains" aria-hidden="true"></div>
-      <div class="lock-card">
-        <span class="eyebrow">A little world is waiting</span>
-        <div class="lock-mark">⌁</div>
-        <h1>Not yet.</h1>
-        <p class="muted">This opens at midnight.</p>
-        <div id="countdown" class="countdown" aria-live="polite"></div>
-        <div class="date-line">13 · 08 · 2026</div>
+  <section id="unlockScreen" class="screen hidden-screen unlock-screen">
+    <div class="unlock-glow" aria-hidden="true"></div><div class="unlock-content">
+      <span class="eyebrow">00:00 · 13 August 2026</span><div class="unlock-number">13</div>
+      <p class="unlock-kicker">The world opens.</p><h1>Happy Birthday,<br><em>Purvi.</em></h1>
+      <button class="primary-btn pulse-btn" data-go="cakeScreen">Enter the celebration</button>
+    </div>
+  </section>
+
+  <section id="cakeScreen" class="screen hidden-screen scene-screen cake-scene">
+    <div class="scene-stars" aria-hidden="true"></div>
+    <div class="scene-copy"><span class="eyebrow">Chapter I · The ceremony</span><h2>Before the world,<br><em>one wish.</em></h2><p>Light the candles. Take a breath. This moment is yours.</p></div>
+    <div class="cake-wrap" id="cakeWrap" aria-label="Interactive butterscotch birthday cake">
+      <div class="cake-glow"></div><div class="cake-plate"></div>
+      <div class="cake"><div class="cake-top"></div><div class="cake-side"></div><div class="cream cream-a"></div><div class="cream cream-b"></div><div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div><div class="cherry c1"></div><div class="cherry c2"></div>
+        <div class="candle candle1"><i></i></div><div class="candle candle2"><i></i></div><div class="candle candle3"><i></i></div><div class="candle candle4"><i></i></div>
       </div>
-    </section>
+    </div>
+    <div class="cake-actions"><button id="lightBtn" class="primary-btn">Light the candles</button><button id="wishBtn" class="secondary-btn" disabled>Make a wish</button><button id="cutBtn" class="secondary-btn" disabled>Cut the cake</button></div>
+    <p id="cakeStatus" class="microcopy">Your wish stays yours.</p><div id="confetti" aria-hidden="true"></div>
+  </section>
 
-    <section id="unlockScreen" class="screen hidden-screen">
-      <div class="unlock-content">
-        <span class="eyebrow">00:00 · 13 August 2026</span>
-        <div class="unlock-number">13</div>
-        <h1>Happy Birthday,<br><em>Purvi.</em></h1>
-        <button class="primary-btn" data-go="cakeScreen">Enter</button>
-      </div>
-    </section>
+  <section id="worldScreen" class="screen hidden-screen world-screen">
+    <div class="world-atmosphere" aria-hidden="true"><span class="world-moon"></span><span class="world-rose">✿</span></div>
+    <header class="world-header"><span class="eyebrow">Chapter II · The personal world</span><h2>Welcome to <em>ISHVERSE.</em></h2><p>A little universe built around the things that make this world feel like yours.</p></header>
+    <div class="world-grid">
+      <button class="world-card rose" data-panel="herPanel"><span>01</span><strong>Her Universe</strong><small>things that feel like you</small></button>
+      <button class="world-card memory" data-panel="memoryPanel"><span>02</span><strong>Memory Constellation</strong><small>14 empty months · June 2025 → July 2026</small></button>
+      <button class="world-card voice" data-panel="voicePanel"><span>03</span><strong>Hear Me</strong><small>your voice notes, added by you</small></button>
+      <button class="world-card cinema" data-panel="videoPanel"><span>04</span><strong>The Cinema</strong><small>your edits, your titles</small></button>
+      <button class="world-card letters" data-panel="letterPanel"><span>05</span><strong>Letters</strong><small>write the words yourself</small></button>
+      <button class="world-card finale-card" data-panel="finalePanel"><span>06</span><strong>The Dawn</strong><small>the final room waits</small></button>
+    </div>
+  </section>
 
-    <section id="cakeScreen" class="screen hidden-screen scene-screen">
-      <div class="scene-copy">
-        <span class="eyebrow">The first little ceremony</span>
-        <h2>Before anything else,<br><em>make a wish.</em></h2>
-        <p>Light the candles. Take a breath. Then make it yours.</p>
-      </div>
-      <div class="cake-wrap">
-        <div class="cake-plate"></div>
-        <div class="cake">
-          <div class="cake-top"></div>
-          <div class="cake-side"></div>
-          <div class="cream cream-a"></div><div class="cream cream-b"></div>
-          <div class="cherry c1"></div><div class="cherry c2"></div>
-          <div class="candle candle1"><i></i></div>
-          <div class="candle candle2"><i></i></div>
-          <div class="candle candle3"><i></i></div>
-          <div class="candle candle4"><i></i></div>
-        </div>
-      </div>
-      <div class="cake-actions">
-        <button id="lightBtn" class="primary-btn">Light the candles</button>
-        <button id="wishBtn" class="secondary-btn" disabled>Make a wish</button>
-      </div>
-      <p id="cakeStatus" class="microcopy">Your wish stays yours.</p>
-    </section>
-
-    <section id="worldScreen" class="screen hidden-screen world-screen">
-      <header class="world-header">
-        <span class="eyebrow">A world made for one person</span>
-        <h2>Purvi's <em>world.</em></h2>
-        <p>Nothing here is filled in for you. Discover it, edit it, make it yours.</p>
-      </header>
-      <div class="world-grid">
-        <button class="world-card rose" data-panel="herPanel"><span>01</span><strong>Her Universe</strong><small>little things that feel like you</small></button>
-        <button class="world-card memory" data-panel="memoryPanel"><span>02</span><strong>Memory Constellation</strong><small>June 2025 → July 2026</small></button>
-        <button class="world-card voice" data-panel="voicePanel"><span>03</span><strong>Voice Notes</strong><small>things meant to be heard</small></button>
-        <button class="world-card cinema" data-panel="videoPanel"><span>04</span><strong>The Cinema</strong><small>your video edits</small></button>
-        <button class="world-card letters" data-panel="letterPanel"><span>05</span><strong>Letters</strong><small>write them yourself</small></button>
-        <button class="world-card finale-card" data-panel="finalePanel"><span>06</span><strong>Later, when you're ready</strong><small>the final room</small></button>
-      </div>
-    </section>
-
-    <section id="panelScreen" class="screen hidden-screen panel-screen">
-      <button id="backBtn" class="back-btn">← Back to her world</button>
-      <div id="herPanel" class="panel hidden"><span class="eyebrow">Her universe</span><h2>A few things that<br><em>feel like you.</em></h2><p class="panel-intro">Black. Moonlight. Mountains. Sunrise. Art. Dance. Music. Tiny dinosaurs. Teddy bears. And all the things you choose to add.</p><div class="motif-grid"><div>🌹<small>black rose</small></div><div>☾<small>night</small></div><div>🏔️<small>mountains</small></div><div>🌅<small>sunrise</small></div><div>🎨<small>painting</small></div><div>💃<small>dance</small></div><div>🦖<small>secret dinosaur</small></div><div>🧸<small>teddy</small></div></div></div>
-
-      <div id="memoryPanel" class="panel hidden"><span class="eyebrow">Nothing invented. Nothing assumed.</span><h2>The Memory<br><em>Constellation.</em></h2><p class="panel-intro">Each month is intentionally empty for now. You can edit and add verified memories manually.</p><div id="months" class="month-grid"></div></div>
-
-      <div id="voicePanel" class="panel hidden"><span class="eyebrow">Things meant to be heard</span><h2>Voice <em>notes.</em></h2><p class="panel-intro">Add your own voice-note files and titles. No message is generated for you.</p><div class="editor-card"><label>Voice note title<input data-store="voiceTitle" placeholder="e.g. One thing I wanted to tell you" /></label><label>Audio URL<input data-store="voiceUrl" placeholder="Paste a hosted audio URL" /></label><button class="primary-btn" id="saveVoice">Save note</button><div id="voicePreview" class="media-preview"></div></div></div>
-
-      <div id="videoPanel" class="panel hidden"><span class="eyebrow">The cinema</span><h2>Your <em>edits.</em></h2><p class="panel-intro">Add your own video-edit links. The site will not invent captions or memories.</p><div class="editor-card"><label>Video title<input data-store="videoTitle" placeholder="Give this edit a title" /></label><label>Video URL<input data-store="videoUrl" placeholder="Paste a hosted video URL" /></label><button class="primary-btn" id="saveVideo">Save video</button><div id="videoPreview" class="media-preview"></div></div></div>
-
-      <div id="letterPanel" class="panel hidden"><span class="eyebrow">Letters I couldn't fit into a chat</span><h2>You <em>write this one.</em></h2><p class="panel-intro">I will never write a personal letter on your behalf. Use the editor below for your own words.</p><div class="editor-card"><label>Letter title<input data-store="letterTitle" placeholder="e.g. For your birthday" /></label><label>Your message<textarea data-store="letterBody" rows="9" placeholder="Write your message here..."></textarea></label><button class="primary-btn" id="saveLetter">Save letter</button><p id="letterSaved" class="microcopy"></p></div></div>
-
-      <div id="finalePanel" class="panel hidden"><span class="eyebrow">When you're ready</span><h2>13 August<br><em>2026.</em></h2><p class="panel-intro">The finale is deliberately simple for now. Your final message, final voice note and final video can be added manually later.</p><button class="primary-btn" data-go="worldScreen">Keep exploring</button></div>
-    </section>
-  </main>
-
-  <script src="app.js"></script>
+  <section id="panelScreen" class="screen hidden-screen panel-screen">
+    <button id="backBtn" class="back-btn">← ISHVERSE</button>
+    <div id="herPanel" class="panel hidden"><span class="eyebrow">01 · Her universe</span><h2>A few things that<br><em>feel like you.</em></h2><p class="panel-intro">A visual language, not a list. Explore the motifs and add your own later.</p><div class="motif-grid"><div>🌹<small>black rose</small></div><div>☾<small>night</small></div><div>🏔️<small>mountains</small></div><div>🌅<small>sunrise</small></div><div>🎨<small>painting</small></div><div>💃<small>dance</small></div><div>🦖<small>tiny secret</small></div><div>🧸<small>teddy</small></div></div></div>
+    <div id="memoryPanel" class="panel hidden"><span class="eyebrow">02 · Nothing invented</span><h2>The Memory<br><em>Constellation.</em></h2><p class="panel-intro">Every month is intentionally empty. Add only memories you choose and verify.</p><div id="months" class="month-grid"></div></div>
+    <div id="voicePanel" class="panel hidden"><span class="eyebrow">03 · Things meant to be heard</span><h2>Hear <em>me.</em></h2><p class="panel-intro">Add your own voice-note title and hosted audio URL. Nothing intimate is generated here.</p><div class="editor-card"><label>Voice note title<input data-store="voiceTitle" placeholder="Write a title yourself" /></label><label>Audio URL<input data-store="voiceUrl" placeholder="Paste a hosted audio URL" /></label><button class="primary-btn" id="saveVoice">Save voice note</button><div id="voicePreview" class="media-preview"></div></div></div>
+    <div id="videoPanel" class="panel hidden"><span class="eyebrow">04 · The cinema</span><h2>Your <em>edits.</em></h2><p class="panel-intro">Add your own video edit and title. The site never invents a caption for you.</p><div class="editor-card"><label>Video title<input data-store="videoTitle" placeholder="Write a title yourself" /></label><label>Video URL<input data-store="videoUrl" placeholder="Paste a hosted video URL" /></label><button class="primary-btn" id="saveVideo">Save video</button><div id="videoPreview" class="media-preview"></div></div></div>
+    <div id="letterPanel" class="panel hidden"><span class="eyebrow">05 · Your words</span><h2>Write it <em>yourself.</em></h2><p class="panel-intro">This space is deliberately blank until you put your own words here.</p><div class="editor-card"><label>Letter title<input data-store="letterTitle" placeholder="Your title" /></label><label>Your message<textarea data-store="letterBody" rows="10" placeholder="Write your own message..."></textarea></label><button class="primary-btn" id="saveLetter">Save letter</button><p id="letterSaved" class="microcopy"></p></div></div>
+    <div id="finalePanel" class="panel hidden"><span class="eyebrow">06 · The dawn</span><h2>The final room<br><em>waits.</em></h2><p class="panel-intro">Your final message, voice note and video belong here when you are ready to add them.</p><button class="primary-btn" data-go="worldScreen">Keep exploring</button></div>
+  </section>
+</main>
+<script src="app.js"></script>
 </body>
 </html>
