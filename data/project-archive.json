@@ -4,15 +4,19 @@
   "experience": ["gift-opening","meet-purvi","the-beginning","growing-together","chat-wrapped","memory-museum","quiz-and-unlocks","secret-vault","video-wishes","birthday-finale"],
   "visual": {"direction":["cute-pastel","soft-romantic","storybook","birthday-gift"],"avoid":["neon","purple","green"]},
   "memory_museum_rooms":["Firsts","School Days","Artist Purvi","Funny Moments","Emotional Moments","Special Days","Hidden Vault"],
-  "anchors":[
-    {"date":"2025-06-21","title":"First sight","type":"beginning"},
-    {"date":"2025-06-22","title":"First conversation","type":"beginning"},
-    {"date":"2025-11-05","title":"Annual Day bus ride","type":"school"},
-    {"date":"2025-11-08","title":"Annual Day practice/final performance","type":"school"},
-    {"date":"2025-11-20","title":"Traditional Day","detail":"Purvi wore a white saree","type":"special-day"},
-    {"date":"2026-02-14","title":"Pulao lunch","detail":"Purvi made pulao and they sat together at lunch","type":"special-day"}
-  ],
-  "archive": {"source":"WhatsApp export","required_layers":["raw messages","monthly extraction reports","monthly statistics","phrases","nicknames","favorite/repeated words","I love you mentions","timestamps","significant conversations","historical events"],"known_monthly_example":{"month":"2025-07","messages":134,"akshat_messages":80,"purvi_messages":54,"active_days":2,"most_active_day":"2025-07-30","most_active_day_messages":88}},
-  "data_rules": {"monthly_reports_are_authoritative_content_layer":true,"do_not_replace_history_with_generic_placeholder_cards":true,"preserve_exact_dates_and_timestamps":true,"deduplicate_by_message_hash":true},
-  "tech": {"frontend":"HTML/CSS/JavaScript","hosting":"GitHub Pages","backend":"Supabase","repository":"akshatusing01/janmdinam-"}
+  "anchors": [],
+  "memory_layer": {
+    "status":"RESET_FOR_VERIFIED_MONTHLY_REBUILD",
+    "historical_memory_records_deleted":true,
+    "raw_chat_archive_preserved":true,
+    "raw_chat_is_source_of_truth":true,
+    "monthly_extracts_are_required_before_creating_historical_memories":true,
+    "memory_descriptions_are_user_editable":true,
+    "exact_raw_chat_evidence_must_be_preserved":true,
+    "simulators_must_be_derived_from_confirmed_memories":true,
+    "simulator_candidates_require_user_selection":true
+  },
+  "archive": {"source":"WhatsApp export","required_layers":["raw messages","monthly extraction reports","monthly statistics","phrases","nicknames","favorite/repeated words","I love you mentions","timestamps","significant conversations","historical events"],"known_monthly_example":null},
+  "data_rules": {"monthly_reports_are_authoritative_content_layer":true,"do_not_replace_history_with_generic_placeholder_cards":true,"preserve_exact_dates_and_timestamps":true,"deduplicate_by_message_hash":true,"do_not_treat_old_hard_coded_memory_cards_as_historical_truth":true},
+  "tech": {"frontend":"HTML/CSS/JavaScript","hosting":"GitHub Pages","backend":"Supabase","repository":"janmdinam-"}
 }
