@@ -26,40 +26,36 @@ function renderMemorySky(){const grid=$('#months');grid.innerHTML=MONTHS.map((m,
 async function openHistoricalSource(month){const folder=FOLDERS[month];$('#sourceTitle').textContent=month;$('#sourceMeta').textContent='Loading historical source…';$('#sourceText').textContent='';$('#historicalSource').classList.remove('hidden');try{const r=await fetch(`https://raw.githubusercontent.com/akshatusing01/janmdinam-/main/HISTORY/${folder}/MONTH_EXTRACT.md`);if(!r.ok)throw new Error(`Source unavailable (${r.status})`);$('#sourceText').textContent=await r.text();$('#sourceMeta').textContent='Canonical HISTORY source extract'}catch(e){$('#sourceMeta').textContent='Source extract unavailable';$('#sourceText').textContent=e.message}}
 $('#closeSource')?.addEventListener('click',()=>$('#historicalSource').classList.add('hidden'));
 
-/* LOCAL-ONLY CREATOR STUDIO: seven taps on 15 reveals controls locally. */
 let studioTaps=0,studioTimer;$('#ageOrbit')?.addEventListener('click',()=>{studioTaps++;clearTimeout(studioTimer);studioTimer=setTimeout(()=>studioTaps=0,1800);if(studioTaps>=7){studioTaps=0;toggleLocalStudio(true)}});
 function toggleLocalStudio(force){const panel=$('#localStudio');if(!panel)return;const open=force??!panel.classList.contains('open');panel.classList.toggle('open',open);panel.setAttribute('aria-hidden',String(!open))}
 function openLocalStudio(section){$('#studioSection').value=section;toggleLocalStudio(true)}
 $('#closeStudio')?.addEventListener('click',()=>toggleLocalStudio(false));
-
 document.querySelectorAll('[data-edit-section]').forEach(b=>b.addEventListener('click',()=>{$('#studioSection').value=b.dataset.editSection}));
 function safeName(name){return name.toLowerCase().replace(/[^a-z0-9._-]+/g,'-').replace(/-+/g,'-').slice(-100)}
 function mediaKind(file){if(file.type.startsWith('video/'))return 'video';if(file.type.startsWith('audio/'))return 'audio';if(file.type.startsWith('image/'))return 'image';return 'document'}
 $('#studioUpload')?.addEventListener('click',async()=>{const file=$('#studioFile')?.files?.[0],section=$('#studioSection').value,title=$('#studioTitle').value.trim()||file?.name||'Creator media',status=$('#studioStatus');if(!file){status.textContent='Choose a file first.';return}try{status.textContent='Uploading…';const path=`${section}/${Date.now()}-${safeName(file.name)}`;const upload=await fetch(`${SUPABASE_URL}/storage/v1/object/${MEDIA_BUCKET}/${path}`,{method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`,'Content-Type':file.type||'application/octet-stream','x-upsert':'true'},body:file});if(!upload.ok)throw new Error(`Storage ${upload.status}: ${await upload.text()}`);await dbPost('birthday_media_assets',{section,title,storage_path:path,media_type:mediaKind(file),mime_type:file.type||'application/octet-stream',file_name:file.name,published:true});status.textContent='Uploaded ✓';$('#studioFile').value='';$('#studioTitle').value='';await loadCreatorAssets()}catch(e){status.textContent=`Upload failed: ${e.message}`}});
 $('#studioSaveLetter')?.addEventListener('click',async()=>{const title=$('#studioLetterTitle').value.trim(),body=$('#studioLetterBody').value,status=$('#studioStatus');if(!body.trim()){status.textContent='Write the letter first.';return}try{status.textContent='Saving letter…';await dbPost('birthday_letters',{title,body,published:true,sort_order:0});$('#letterTitleDisplay').textContent=title||'A little letter';$('#letterBodyDisplay').textContent=body;status.textContent='Letter saved ✓'}catch(e){status.textContent=`Letter save failed: ${e.message}`}});
 
-/* Countdown reference theme: injected last so it wins over the existing desktop stylesheet without disturbing the other rooms. */
-const countdownTheme=document.createElement('style');countdownTheme.textContent=`
-@media (max-width:700px){
+/* Countdown reference theme — exact visual direction from the supplied image. */
+(function(){const lock=$('#lockScreen');if(!lock)return;const copy=lock.querySelector('.opening-copy');if(copy){const eyebrow=copy.querySelector('.eyebrow'),title=copy.querySelector('h1'),lead=copy.querySelector('p'),date=copy.querySelector('.date-line');if(eyebrow)eyebrow.textContent='ISHVERSE · SEALED UNTIL MIDNIGHT';if(title)title.innerHTML='Not yet.';if(lead)lead.textContent='Something made just for you is waiting.';if(date)date.textContent='13 · 08 · 2026'}const back=document.createElement('button');back.className='countdown-back';back.type='button';back.textContent='← ISHVERSE';lock.append(back);const style=document.createElement('style');style.textContent=`
 .countdown-screen{background:radial-gradient(circle at 52% 34%,#211a18 0%,#100d0c 38%,#070605 76%,#030302 100%)!important;color:#f3eee9!important;overflow:hidden!important}
 .countdown-screen .stars{background-image:radial-gradient(#fff 1px,transparent 1.4px),radial-gradient(#e7ded5 .8px,transparent 1.2px)!important;background-size:132px 132px,89px 97px!important;opacity:.22!important}
 .countdown-screen .moon-a{width:330px!important;height:330px!important;right:-78px!important;top:4%!important;background:#d9d4cc!important;box-shadow:0 0 80px #d7cec055,0 18px 45px #0008!important;opacity:.94!important;z-index:0!important}
-.countdown-screen .moon-b{width:78%!important;height:29%!important;left:-8%!important;bottom:-10%!important;border-radius:0!important;background:#11100f!important;clip-path:polygon(0 100%,0 72%,13% 31%,23% 55%,37% 17%,51% 70%,63% 42%,77% 67%,88% 32%,100% 70%,100% 100%)!important;z-index:1!important;opacity:.92!important}
+.countdown-screen .moon-b{display:none!important}
 .countdown-screen:after{content:''!important;position:absolute!important;z-index:2!important;left:-8%!important;bottom:-13%!important;width:118%!important;height:31%!important;background:#090908!important;clip-path:polygon(0 100%,0 70%,16% 35%,28% 58%,42% 16%,54% 55%,66% 31%,78% 66%,91% 39%,100% 65%,100% 100%)!important}
 .countdown-screen .opening-copy{width:min(92vw,560px)!important;max-width:none!important;position:absolute!important;top:49%!important;left:50%!important;transform:translate(-50%,-34%)!important;z-index:5!important}
-.countdown-screen .opening-copy>.eyebrow{display:block!important;font-size:0!important;letter-spacing:.32em!important;color:#bdb5ae!important;margin-bottom:30px!important;white-space:nowrap!important}
-.countdown-screen .opening-copy>.eyebrow:after{content:'ISHVERSE · SEALED UNTIL MIDNIGHT';font:700 clamp(.48rem,1.7vw,.68rem)/1 'DM Sans',sans-serif!important;letter-spacing:.32em!important;color:#bdb5ae!important}
-.countdown-screen .opening-copy h1{font-size:0!important;line-height:.78!important;letter-spacing:-.055em!important;margin:0 0 22px!important;color:#f4f0ec!important}
-.countdown-screen .opening-copy h1:before{content:'Not yet.'!important;display:block!important;font:500 clamp(4.2rem,16vw,6.3rem)/.78 'Cormorant Garamond',serif!important;letter-spacing:-.055em!important;color:#f4f0ec!important}
-.countdown-screen .opening-copy h1:after{content:'✦'!important;display:block!important;font:400 2rem/1 'Cormorant Garamond',serif!important;color:#f1b9b5!important;margin:22px 0 0!important}
-.countdown-screen .opening-copy>p{font-size:0!important;margin:0 0 28px!important;color:#d2cbc6!important}
-.countdown-screen .opening-copy>p:after{content:'Something made just for you is waiting.'!important;font:400 clamp(.95rem,3.5vw,1.2rem)/1.4 'DM Sans',sans-serif!important;color:#d2cbc6!important}
+.countdown-screen .opening-copy>.eyebrow{font-size:.58rem!important;letter-spacing:.32em!important;color:#bdb5ae!important;margin-bottom:30px!important;white-space:nowrap!important}
+.countdown-screen .opening-copy h1{font:500 clamp(4.2rem,16vw,6.3rem)/.78 'Cormorant Garamond',serif!important;letter-spacing:-.055em!important;margin:0 0 22px!important;color:#f4f0ec!important}
+.countdown-screen .opening-copy h1 em{display:none!important}
+.countdown-screen .opening-copy h1:after{content:'✦';display:block;font:400 2rem/1 'Cormorant Garamond',serif;color:#f1b9b5;margin:22px 0 0}
+.countdown-screen .opening-copy>p{font-size:clamp(.95rem,3.5vw,1.2rem)!important;line-height:1.4!important;color:#d2cbc6!important;margin:0 0 28px!important}
 .countdown-screen .countdown{gap:10px!important;margin:0 0 26px!important;justify-content:center!important}
 .countdown-screen .countdown .unit{min-width:67px!important;padding:0!important;border:0!important;background:transparent!important;border-radius:0!important}
 .countdown-screen .countdown b{font:500 2.15rem/1 'Cormorant Garamond',serif!important;letter-spacing:.01em!important;color:#f1ece7!important}
 .countdown-screen .countdown span{display:block!important;margin-top:8px!important;font:500 .48rem/1 'DM Sans',sans-serif!important;letter-spacing:.24em!important;color:#8f8985!important}
 .countdown-screen .date-line{font-size:.6rem!important;letter-spacing:.42em!important;color:#817a76!important;margin-left:.42em!important;margin-top:3px!important}
 .countdown-screen #tempUnlock{display:none!important}
-.countdown-screen .moon-a:after{content:''!important;position:absolute!important;inset:0!important;border-radius:50%!important;background:radial-gradient(circle at 33% 28%,#fff8 0,transparent 30%),radial-gradient(circle at 62% 65%,#8f888044 0,transparent 38%)!important;mix-blend-mode:soft-light!important}
-}
-`;document.head.appendChild(countdownTheme);
+.countdown-screen .countdown-back{position:absolute;top:34px;left:32px;z-index:8;border:1px solid #ffffff20;background:#0e0d0dca;color:#e7dfda;border-radius:999px;padding:11px 18px;font-size:.68rem;backdrop-filter:blur(12px)}
+.countdown-screen .moon-a:after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 33% 28%,#fff8 0,transparent 30%),radial-gradient(circle at 62% 65%,#8f888044 0,transparent 38%);mix-blend-mode:soft-light}
+@media(max-width:700px){.countdown-screen .moon-a{width:61vw!important;height:61vw!important;right:-8%!important;top:3.5%!important}.countdown-screen .opening-copy{margin-top:4vh!important}.countdown-screen .countdown-back{top:22px;left:18px;padding:10px 16px}.countdown-screen .opening-copy h1{margin-top:0!important}}
+`;document.head.appendChild(style)})();
