@@ -1,4 +1,4 @@
-/* FINAL EMERGENCY FIX — prevent non-active screens from leaking through CSS display rules. */
+/* FINAL RECIPIENT VIEW */
 html,body,#app{width:100%;max-width:100%;margin:0;padding:0;overflow-x:hidden!important}
 .screen.hidden-screen,.screen:not(.active){display:none!important;visibility:hidden!important;pointer-events:none!important}
 .screen.active{display:flex;width:100vw!important;max-width:100vw!important;min-width:0!important;visibility:visible!important;pointer-events:auto!important}
@@ -6,21 +6,14 @@ html,body,#app{width:100%;max-width:100%;margin:0;padding:0;overflow-x:hidden!im
 .screen.room-screen.active{display:block!important;overflow-x:hidden!important;padding:65px 18px 45px!important}
 .dashboard-top,.top-dashboard,.dashboard-welcome,.dashboard-grid,.dashboard-note{width:100%;max-width:1080px;min-width:0}
 .dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.dashboard-welcome>*{min-width:0}
-.party-card{min-width:0!important;max-width:100%!important}
+.dashboard-welcome>*{min-width:0}.party-card{min-width:0!important;max-width:100%!important}
 .back-party{position:absolute!important;top:18px!important;left:18px!important}
+/* Cake personalization */
+.cake{position:relative!important}.cake-name,.cake-age{position:absolute;z-index:8;left:50%;transform:translateX(-50%);font-family:'Fredoka',sans-serif;font-weight:800;line-height:1;text-align:center;text-shadow:0 2px 0 rgba(255,255,255,.8)}
+.cake-name{top:37%;font-size:clamp(18px,5vw,32px);letter-spacing:1px;color:#ff5d91}.cake-age{top:55%;font-size:clamp(25px,7vw,44px);color:#ff7b3d}
+.finalized-meta{margin:14px auto;text-align:center;color:#8b6c83;font-weight:700}.finalized-letter{padding-top:48px}.letter-body-display{white-space:pre-wrap;line-height:1.75;color:#5d465b;font-size:1rem;margin-top:18px}.finalized-memory-status{text-align:center;margin:8px auto 18px;color:#8f748a;font-size:.8rem;font-weight:700}
 @media(max-width:680px){
-  .screen.dashboard-screen.active{padding:20px 14px 32px!important}
-  .screen.room-screen.active{padding:68px 14px 32px!important}
-  .dashboard-top{gap:10px}
-  .dashboard-top .brand-lockup{min-width:0;overflow:hidden}
-  .brand-lockup h2{font-size:clamp(2.5rem,13vw,3.5rem)!important;max-width:100%}
-  .dashboard-sticker{flex:0 0 70px}
-  .top-dashboard{max-width:100%;overflow-x:auto}
-  .dashboard-welcome{display:block!important}
-  .mini-progress{justify-content:flex-start!important}
-  .dashboard-grid{grid-template-columns:1fr!important}
-  .dashboard-grid .party-card{min-height:190px}
-  .party-card strong{font-size:1.35rem}
-  .party-card .card-art{font-size:3.5rem}
+.screen.dashboard-screen.active{padding:20px 14px 32px!important}.screen.room-screen.active{padding:68px 14px 32px!important}
+.dashboard-top{gap:10px}.dashboard-top .brand-lockup{min-width:0;overflow:hidden}.brand-lockup h2{font-size:clamp(2.5rem,13vw,3.5rem)!important;max-width:100%}.dashboard-sticker{flex:0 0 70px}.top-dashboard{max-width:100%;overflow-x:auto}.dashboard-welcome{display:block!important}.mini-progress{justify-content:flex-start!important}.dashboard-grid{grid-template-columns:1fr!important}.dashboard-grid .party-card{min-height:190px}.party-card strong{font-size:1.35rem}.party-card .card-art{font-size:3.5rem}
+.cake-name{top:36%}.cake-age{top:54%}
 }
