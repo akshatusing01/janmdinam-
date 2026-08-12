@@ -1,123 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#030303" />
-  <title>ISHVERSE — 13 August 2026</title>
-  <meta name="description" content="A private birthday universe made for Purvi." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#171022"><title>Purvi's Birthday 🎀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&family=Italianno&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="ambient" aria-hidden="true"></div>
 <main id="app">
-  <!-- KEEP: LOCKED COUNTDOWN -->
-  <section id="lockScreen" class="screen active hero-screen">
-    <div class="stars" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div><div class="mountains" aria-hidden="true"></div>
-    <div class="lock-card">
-      <span class="eyebrow">ISHVERSE · sealed until midnight</span>
-      <div class="lock-mark">✦</div><h1>Not yet.</h1>
-      <p class="muted">Something made just for you is waiting.</p>
-      <div id="countdown" class="countdown" aria-live="polite"></div><div class="date-line">13 · 08 · 2026</div>
-    </div>
-  </section>
+<!-- COUNTDOWN: PRESERVED + TEMP UNLOCK -->
+<section id="lockScreen" class="screen active countdown-screen"><div class="confetti-bg"></div><div class="cloud cloud1"></div><div class="cloud cloud2"></div><div class="countdown-card"><div class="sticker">🎀</div><span class="tiny-label">A tiny birthday secret is hiding here</span><h1>Shhh...<br><span>wait for it!</span></h1><p>Something silly, sweet &amp; very special is locked until midnight.</p><div id="countdown" class="countdown"></div><div class="date-pill">13 · 08 · 2026 · 00:00 IST</div><button id="tempUnlock" class="ghost-unlock">🪄 Temporary unlock</button></div></section>
 
-  <!-- REDESIGNED: MIDNIGHT REVEAL -->
-  <section id="unlockScreen" class="screen hidden-screen reveal-screen">
-    <div class="reveal-particles" aria-hidden="true"></div>
-    <div class="reveal-orb" aria-hidden="true"></div>
-    <div class="reveal-content">
-      <span class="eyebrow">00:00 · 13 August 2026</span>
-      <div class="reveal-symbol">13</div>
-      <span class="script-line">the door is open</span>
-      <h1>Welcome to<br><em>ISHVERSE.</em></h1>
-      <p>A birthday world that only begins when you do.</p>
-      <button class="primary-btn reveal-btn" data-go="cakeScreen">Step inside <span>↗</span></button>
-    </div>
-  </section>
+<!-- MIDNIGHT REVEAL -->
+<section id="unlockScreen" class="screen hidden-screen reveal-screen"><div class="party-burst">🎉</div><div class="reveal-card"><span class="tiny-label">IT'S YOUR DAY!!!</span><div class="big-emoji">🥳</div><div class="script">finallyyyy!</div><h2>HAPPY<br><span>BIRTHDAY!</span></h2><p>Okay, okay... enough waiting.<br>Come on. The party is starting. 💗</p><button class="fun-btn" data-go="cakeScreen">LET'S CELEBRATE! <b>→</b></button></div></section>
 
-  <!-- KEEP: CAKE CUTTING CEREMONY -->
-  <section id="cakeScreen" class="screen hidden-screen scene-screen cake-scene">
-    <div class="scene-stars" aria-hidden="true"></div>
-    <div class="scene-copy"><span class="eyebrow">Chapter I · The ceremony</span><h2>Before the world,<br><em>one wish.</em></h2><p>Light the candles. Take a breath. This moment is yours.</p></div>
-    <div class="cake-wrap" id="cakeWrap" aria-label="Interactive butterscotch birthday cake">
-      <div class="cake-glow"></div><div class="cake-plate"></div>
-      <div class="cake"><div class="cake-top"></div><div class="cake-side"></div><div class="cream cream-a"></div><div class="cream cream-b"></div><div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div><div class="cherry c1"></div><div class="cherry c2"></div>
-        <div class="candle candle1"><i></i></div><div class="candle candle2"><i></i></div><div class="candle candle3"><i></i></div><div class="candle candle4"><i></i></div>
-      </div>
-    </div>
-    <div class="cake-actions"><button id="lightBtn" class="primary-btn">Light the candles</button><button id="wishBtn" class="secondary-btn" disabled>Make a wish</button><button id="cutBtn" class="secondary-btn" disabled>Cut the cake</button></div>
-    <p id="cakeStatus" class="microcopy">Your wish stays yours.</p><div id="confetti" aria-hidden="true"></div>
-  </section>
+<!-- CAKE CEREMONY: PRESERVED -->
+<section id="cakeScreen" class="screen hidden-screen cake-screen"><div class="cake-stars"></div><div class="cake-heading"><span class="tiny-label">🎂 THE CEREMONY</span><h2>One cake.<br><span>One wish.</span></h2><p>Light the candles. Make a wish. Cut the cake!</p></div><div class="cake-wrap" id="cakeWrap"><div class="cake-glow"></div><div class="cake-plate"></div><div class="cake"><div class="cake-top"></div><div class="cake-side"></div><div class="cream cream-a"></div><div class="cream cream-b"></div><div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div><div class="cherry c1"></div><div class="cherry c2"></div><div class="candle candle1"><i></i></div><div class="candle candle2"><i></i></div><div class="candle candle3"><i></i></div><div class="candle candle4"><i></i></div></div></div><div class="cake-actions"><button id="lightBtn" class="fun-btn">Light the candles ✨</button><button id="wishBtn" class="soft-btn" disabled>Make a wish 🤫</button><button id="cutBtn" class="soft-btn" disabled>Cut the cake 🔪</button></div><p id="cakeStatus" class="status">Your wish stays yours. 💗</p><div id="confetti" class="confetti-layer"></div></section>
 
-  <!-- REDESIGNED: ISHVERSE HUB -->
-  <section id="worldScreen" class="screen hidden-screen universe-screen">
-    <div class="universe-sky" aria-hidden="true"><span class="u-moon"></span><span class="u-mountain"></span><span class="u-glow g1"></span><span class="u-glow g2"></span></div>
-    <div class="universe-topbar"><span class="eyebrow">ISHVERSE</span><span class="tiny-mark">13 · 08 · 2026</span></div>
-    <header class="universe-title">
-      <span class="script-line">a world made from little things</span>
-      <h2>Explore<br><em>your universe.</em></h2>
-      <p>Every doorway leads somewhere different.</p>
-    </header>
-    <div class="portal-map">
-      <button class="portal p-rose" data-panel="herPanel"><span class="portal-icon">✿</span><b>HER UNIVERSE</b><small>the things that feel like you</small></button>
-      <button class="portal p-memory" data-panel="memoryPanel"><span class="portal-icon">✦</span><b>MEMORY SKY</b><small>14 empty chapters, waiting</small></button>
-      <button class="portal p-voice" data-panel="voicePanel"><span class="portal-icon">◉</span><b>HEAR ME</b><small>your voice, your words</small></button>
-      <button class="portal p-cinema" data-panel="videoPanel"><span class="portal-icon">▶</span><b>THE CINEMA</b><small>your edits on the big screen</small></button>
-      <button class="portal p-letter" data-panel="letterPanel"><span class="portal-icon">✉</span><b>THE LETTER ROOM</b><small>write what only you can say</small></button>
-      <button class="portal p-dawn" data-panel="finalePanel"><span class="portal-icon">☼</span><b>THE DAWN</b><small>the last room, later</small></button>
-    </div>
-    <div class="universe-hint"><span>drag / tap the portals</span><span>✦</span><span>there are things hidden here</span></div>
-  </section>
+<!-- MAIN CELEBRATION -->
+<section id="celebrationScreen" class="screen hidden-screen celebration-screen"><div class="celebration-bg"><i>★</i><i>♡</i><i>✦</i><i>●</i><i>🎈</i><i>★</i></div><div class="celebration-inner"><div class="celebrate-sticker">🎊</div><span class="tiny-label">THE CAKE HAS BEEN CUT!</span><h2>Now it's time<br>to <span>PLAY.</span> 💕</h2><p class="celebrate-copy">Welcome to the fun part.<br>Pick a box. Open a surprise. Stay as long as you want.</p><div class="party-stats"><span>🎂<b>CAKE</b><small>done!</small></span><span>🎬<b>VIDEOS</b><small>waiting</small></span><span>💌<b>LETTERS</b><small>for you</small></span></div><button class="fun-btn giant" data-go="partyScreen">OPEN THE PARTY ROOM 🎁</button></div></section>
 
-  <!-- REDESIGNED: ROOM SHELL -->
-  <section id="panelScreen" class="screen hidden-screen room-screen">
-    <div class="room-backdrop" aria-hidden="true"></div>
-    <button id="backBtn" class="back-btn">← Back to ISHVERSE</button>
+<!-- PLAYFUL PARTY ROOM -->
+<section id="partyScreen" class="screen hidden-screen party-screen"><header class="party-header"><div><span class="tiny-label">PURVI'S BIRTHDAY</span><h2>Pick your <span>adventure!</span></h2></div><div class="party-badge">13<br><small>AUG</small></div></header><div class="party-grid"><button class="party-card video-card" data-panel="videoPanel"><div class="card-art">🎬</div><strong>Movie Time!</strong><small>Watch the edits made for you</small><b class="open-arrow">OPEN →</b></button><button class="party-card letter-card" data-panel="letterPanel"><div class="card-art">💌</div><strong>Open My Letter</strong><small>Words waiting inside</small><b class="open-arrow">OPEN →</b></button><button class="party-card voice-card" data-panel="voicePanel"><div class="card-art">🎧</div><strong>Hear This!</strong><small>Little things meant to be heard</small><b class="open-arrow">OPEN →</b></button><button class="party-card memory-card" data-panel="memoryPanel"><div class="card-art">✨</div><strong>Memory Jar</strong><small>Drop in memories yourself</small><b class="open-arrow">OPEN →</b></button></div><div class="party-footer">Made with ridiculous amounts of love <span>♡</span></div></section>
 
-    <div id="herPanel" class="room hidden">
-      <div class="room-hero room-hero-rose"><span class="room-index">01 · HER UNIVERSE</span><div class="hero-object">✿</div><h2>Things that<br><em>feel like you.</em></h2><p>Not a list of favourites. A collection of little visual echoes.</p></div>
-      <div class="object-grid">
-        <button class="object-tile bloom"><span>🌹</span><b>Black rose</b><small>tap to bloom</small></button>
-        <button class="object-tile night"><span>☾</span><b>Night</b><small>tap to change the sky</small></button>
-        <button class="object-tile mountain"><span>🏔️</span><b>Mountains</b><small>tap to travel</small></button>
-        <button class="object-tile sun"><span>☀️</span><b>Sunrise</b><small>tap to bring the dawn</small></button>
-        <button class="object-tile art"><span>🎨</span><b>Canvas</b><small>your space to create</small></button>
-        <button class="object-tile dance"><span>◌</span><b>Movement</b><small>grace in motion</small></button>
-        <button class="object-tile dino"><span>🦖</span><b>Secret friend</b><small>you found it</small></button>
-        <button class="object-tile teddy"><span>🧸</span><b>Teddy corner</b><small>soft things belong here</small></button>
-      </div>
-    </div>
+<!-- CONTENT ROOMS -->
+<section id="panelScreen" class="screen hidden-screen room-screen"><button id="backBtn" class="back-party">← party room</button>
+<div id="videoPanel" class="room hidden"><div class="room-top video-top"><span class="tiny-label">🎬 THE CINEMA</span><div class="room-emoji">🍿</div><h2>Press play.<br><span>It's yours.</span></h2><p>Your video edits live here. Upload them directly from your phone or computer.</p></div><div class="upload-box"><input id="videoFile" type="file" accept="video/*" hidden><button class="upload-button" id="videoUploadBtn">📤 CHOOSE VIDEO</button><p>MP4, WebM, MOV etc. · works locally in this browser</p><div id="videoFileName" class="file-name"></div></div><div class="video-player-wrap empty" id="videoPlayerWrap"><div class="empty-art">🎞️<br><small>Your movie will appear here</small></div><video id="videoPlayer" controls playsinline></video></div><div class="manual-title"><label>Give it a title<input id="videoTitle" placeholder="e.g. a title you choose"></label><button class="soft-btn" id="saveVideoTitle">Save title</button></div></div>
+<div id="letterPanel" class="room hidden"><div class="room-top letter-top"><span class="tiny-label">💌 THE LETTER</span><div class="room-emoji">💗</div><h2>Your words.<br><span>Your way.</span></h2><p>Nothing is written for you. This page is deliberately yours to fill.</p></div><div class="letter-paper"><div class="paper-tape">FOR PURVI ♡</div><input id="letterTitle" class="letter-title" placeholder="Give your letter a title..."><textarea id="letterBody" placeholder="Write your own letter here...\n\nTake your time."></textarea><div class="letter-actions"><span id="letterSaved" class="saved-note"></span><button class="fun-btn" id="saveLetter">SAVE MY LETTER 💌</button></div></div></div>
+<div id="voicePanel" class="room hidden"><div class="room-top voice-top"><span class="tiny-label">🎧 HEAR THIS</span><div class="room-emoji">🎙️</div><h2>Press play.<br><span>Listen.</span></h2><p>Add your voice notes here when you're ready.</p></div><div class="upload-box"><input id="audioFile" type="file" accept="audio/*" hidden><button class="upload-button" id="audioUploadBtn">🎙️ CHOOSE AUDIO</button><p>MP3, M4A, WAV, OGG etc. · works locally in this browser</p><div id="audioFileName" class="file-name"></div></div><div class="audio-player-wrap" id="audioPlayerWrap"><div>🎧 <span>Your voice note will appear here</span></div><audio id="audioPlayer" controls></audio></div></div>
+<div id="memoryPanel" class="room hidden"><div class="room-top memory-top"><span class="tiny-label">✨ MEMORY JAR</span><div class="room-emoji">🫙</div><h2>Fourteen little<br><span>empty chapters.</span></h2><p>Keep them empty until you choose what belongs here.</p></div><div id="months" class="memory-grid"></div></div></section>
 
-    <div id="memoryPanel" class="room hidden">
-      <div class="room-hero room-hero-stars"><span class="room-index">02 · MEMORY SKY</span><div class="hero-object">✦</div><h2>Fourteen empty<br><em>chapters.</em></h2><p>Nothing is generated. You decide what deserves a place in the sky.</p></div>
-      <div id="months" class="chapter-grid"></div>
-    </div>
-
-    <div id="voicePanel" class="room hidden">
-      <div class="room-hero room-hero-voice"><span class="room-index">03 · HEAR ME</span><div class="hero-object">◉</div><h2>Some things are<br><em>better heard.</em></h2><p>Add your own recordings. Keep the words and the voice completely yours.</p></div>
-      <div class="editor-layout"><div class="editor-card"><label>Title<input data-store="voiceTitle" placeholder="Write a title yourself" /></label><label>Audio URL<input data-store="voiceUrl" placeholder="Paste a hosted audio URL" /></label><button class="primary-btn" id="saveVoice">Save voice note</button></div><div id="voicePreview" class="media-stage"><span>your audio will appear here</span></div></div>
-    </div>
-
-    <div id="videoPanel" class="room hidden">
-      <div class="room-hero room-hero-cinema"><span class="room-index">04 · THE CINEMA</span><div class="hero-object">▶</div><h2>Your memories,<br><em>on the big screen.</em></h2><p>Add your own edits. Give each one the title you want it to carry.</p></div>
-      <div class="editor-layout"><div class="editor-card"><label>Video title<input data-store="videoTitle" placeholder="Write a title yourself" /></label><label>Video URL<input data-store="videoUrl" placeholder="Paste a hosted video URL" /></label><button class="primary-btn" id="saveVideo">Save video</button></div><div id="videoPreview" class="media-stage"><span>your video will appear here</span></div></div>
-    </div>
-
-    <div id="letterPanel" class="room hidden">
-      <div class="room-hero room-hero-letter"><span class="room-index">05 · THE LETTER ROOM</span><div class="hero-object">✉</div><h2>Write the words<br><em>only you can say.</em></h2><p>This room stays blank until you fill it.</p></div>
-      <div class="letter-paper"><label>Title<input data-store="letterTitle" placeholder="Your title" /></label><label>Message<textarea data-store="letterBody" rows="14" placeholder="Write your own words..."></textarea></label><div class="paper-footer"><span id="letterSaved" class="microcopy"></span><button class="primary-btn" id="saveLetter">Save letter</button></div></div>
-    </div>
-
-    <div id="finalePanel" class="room hidden dawn-room">
-      <div class="dawn-sky" aria-hidden="true"></div>
-      <div class="dawn-content"><span class="room-index">06 · THE DAWN</span><div class="hero-object">☼</div><span class="script-line">when the night becomes morning</span><h2>13 August<br><em>2026.</em></h2><p>Your final room is waiting for the words, voice and video you choose to put there.</p><button class="primary-btn" data-go="worldScreen">Return to ISHVERSE</button></div>
-    </div>
-  </section>
-</main>
-<script src="app.js"></script>
-</body>
-</html>
+<script src="app.js"></script></main></body></html>
