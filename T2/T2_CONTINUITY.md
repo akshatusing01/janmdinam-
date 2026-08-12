@@ -22,79 +22,176 @@ Historical monthly material is intentionally not duplicated inside F1/T2.
 
 All historical claims must be read from `HISTORY/`. Exact quotes require source verification. Uncertain/deleted material must remain marked unavailable rather than invented.
 
-## 2026-08-12 — UI/UX and build direction
+## CURRENT BUILD DIRECTION — ISHVERSE
 
-The user approved a new core opening direction:
+The user wants the website to create an exceptional reaction: a birthday experience that feels unlike a normal website.
 
-`LOCKED COUNTDOWN → MIDNIGHT UNLOCK → INTERACTIVE CAKE CEREMONY → MAKE A WISH → PERSONAL WORLD`
+Canonical direction:
 
-The creator has voice notes, video edits, and special messages that will later be placed into the experience.
+**ISHVERSE = magical birthday universe + interactive celebration + personal world.**
 
-### Proposed Personal World areas
+Target qualities:
 
-- Her Universe
-- Memory Constellation
-- Voice Notes
-- The Cinema / Video Edits
-- Letters
-- Finale
+- luxury
+- magical
+- cute
+- cinematic
+- playful
+- highly interactive
+- birthday celebration first
+- Purvi's personality second
+- cinematic emotion third
 
-These are implementation directions, not permission to invent personal content.
+The UI itself should feel like a birthday gift rather than a website containing birthday content.
 
-### Explicit user constraints
+## Opening / ceremony
 
-1. **Memory Constellation must stay empty for now.** It must contain monthly sections from **June 2025 through July 2026**, with no memories prefilled by the assistant.
-2. **Never write personal letters on the user's behalf.** Provide an editor/input area only.
-3. Apply the same manual-entry principle to memories and other personal content: placeholders/editors first, user-supplied content later.
-4. Do not manufacture historical events, quotes, emotional messages, or media captions.
-5. Historical material, when added, must come from `HISTORY/` and be verified.
+```text
+LOCKED COUNTDOWN
+      ↓
+MIDNIGHT UNLOCK — 13 AUGUST 2026 00:00 IST
+      ↓
+INTERACTIVE BUTTERSCOTCH CAKE CEREMONY
+      ↓
+MAKE A WISH
+      ↓
+EXTINGUISH CANDLES
+      ↓
+CUT CAKE
+      ↓
+CELEBRATION
+      ↓
+ENTER ISHVERSE
+```
 
-## Step 2 — Initial UI shell completed
+### Cake ceremony implementation priorities
 
-Files added:
+1. Cinematic cake arrival.
+2. Interactive candle lighting.
+3. Quiet make-a-wish interaction.
+4. Reliable tap-to-extinguish candles; microphone blow detection is optional later.
+5. Drag-to-cut cake interaction.
+6. Celebration/confetti.
+7. Transition from candle smoke/light into ISHVERSE.
+8. Optional manual cake-review input, if implemented, must preserve exactly what the user enters and must not be AI-generated.
+
+Butterscotch is the chosen cake concept. Do not claim it is Purvi's favourite cake unless separately verified; documented source material supports butterscotch as an ice-cream preference.
+
+## ISHVERSE structure
+
+The Personal World should behave as an explorable environment, not a grid of generic cards.
+
+Core areas:
+
+- 🌹 Her Universe
+- 🧠 Memory Constellation
+- 🎧 Voice Notes / “Hear Me”
+- 🎬 The Cinema / Video Edits
+- 💌 Letters / manual messages
+- 🦖 Secret Easter Eggs
+- 🌅 Finale / sunrise transformation
+
+### Her Universe visual interactions
+
+Use documented likes as design language, selectively:
+
+- black → premium base
+- black rose → living visual element
+- moon/night → atmosphere
+- mountains → distant landscape
+- sunrise/sunshine → ending transformation
+- painting → creative interaction
+- Bharatanatyam/dance → graceful motion language
+- dinosaur → playful Easter egg
+- teddy/dolls → cute collectible interaction
+- romantic music → emotional layer
+- butterscotch → cake ceremony concept
+
+Do not turn these into a flat “favourites list.”
+
+## MEMORY CONSTELLATION — LOCKED EMPTY
+
+The Memory Constellation must currently contain **only empty monthly sections**:
+
+- June 2025
+- July 2025
+- August 2025
+- September 2025
+- October 2025
+- November 2025
+- December 2025
+- January 2026
+- February 2026
+- March 2026
+- April 2026
+- May 2026
+- June 2026
+- July 2026
+
+No memories are to be inserted by the assistant.
+
+When the creator later supplies a memory, provide an editable/manual entry flow and preserve creator-supplied content.
+
+## MANUAL PERSONAL-CONTENT RULE — LOCKED
+
+The assistant must not write personal letters, birthday messages, memory descriptions, voice-note captions, video captions, or other intimate content on the creator's behalf.
+
+Provide editable placeholders/editors instead.
+
+Creator-owned media to be inserted later:
+
+- voice notes
+- video edits
+- special messages / letters
+
+Historical content must be verified from `HISTORY/` before use.
+
+## Emotional progression
+
+The overall world should move from:
+
+**night → midnight magic → celebration → exploration → emotional intimacy → sunrise**
+
+The ending should use sunrise/sunshine as a transformation motif because it is associated with Purvi's documented preferences.
+
+## Current implementation state
+
+Initial shell exists at repository root:
 
 - `index.html`
 - `styles.css`
 - `app.js`
-- `T2/STEP_2_BUILD_STATE.md`
 
-The shell currently provides:
+The current shell includes the initial countdown, unlock, candle/cake, wish, Personal World, empty month sections and manual content editors. The next implementation pass should evolve this into the richer ISHVERSE direction.
 
-- locked countdown to `13 August 2026 00:00 IST`
-- midnight unlock scene
-- cinematic black / moon / mountain atmosphere
-- interactive candle-lighting cake ceremony
-- wish interaction
-- Personal World navigation
-- Her Universe motif section
-- 14 empty Memory Constellation month sections
-- manual memory entry interaction
-- manual voice-note title/URL editor
-- manual video title/URL editor
-- manual letter title/body editor
-- localStorage persistence for manually entered content
-- responsive mobile-first UI
-- finale placeholder
+## 2-hour build priority
 
-The UI does **not** contain generated personal letters or fabricated historical memories.
+1. Build the complete path end-to-end.
+2. Make the cake ceremony the first showcase feature.
+3. Create the ISHVERSE environment.
+4. Connect manual content slots for creator-owned media/messages.
+5. Keep Memory Constellation empty.
+6. Add verified source material only when explicitly selected.
+7. QA mobile.
+8. Deploy.
 
-## Build priority for the 2-hour sprint
+Do not spend the entire sprint polishing a single scene while the journey is incomplete.
 
-1. Get the complete journey rendering and navigable.
-2. Polish the visual system and transitions.
-3. Keep all personal-content slots manually editable.
-4. Add only verified source material when explicitly requested.
-5. QA on mobile.
-6. Deploy.
+## Next step
 
-## Current next step
+**STEP 3 — Implement the richer ISHVERSE visual direction, beginning with the interactive cake ceremony and its transition into the Personal World.**
 
-**STEP 3 — Polish the complete cinematic journey and improve transitions/navigation while preserving the manual-content rule.**
+## Continuity log
 
-## Continuity rule
+### 2026-08-12 — ISHVERSE direction recorded
+- Reframed the experience as a magical birthday universe + interactive celebration + personal world.
+- Locked the countdown → midnight → cake → wish → cake cutting → ISHVERSE opening sequence.
+- Locked empty Memory Constellation months June 2025 through July 2026.
+- Locked manual-only handling of personal letters/messages/memories/media captions.
+- Established cake ceremony as first showcase interaction and quality bar.
 
+### Future entries
 After every major build step, append:
-
 - current state
 - what changed
 - decisions
