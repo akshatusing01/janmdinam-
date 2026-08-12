@@ -30,10 +30,34 @@
     if(open){e.preventDefault();e.stopImmediatePropagation();party();return;}
   },true);
 
-  // If the original ceremony handler already completed before this script attached,
-  // keep the next screen available rather than leaving a blank/hidden state.
   window.addEventListener('pageshow',()=>{
     const active=document.querySelector('.screen.active');
     if(!active && $('#cakeScreen'))show('cakeScreen');
   });
+
+  /* CREATOR STUDIO GUARD
+     The editing UI must never appear during the normal birthday experience.
+     It is intentionally available only through the explicit #creator route.
+     This also clears an old session flag left by the previous 7-tap trigger. */
+  function guardCreatorStudio(){
+    const panel=$('#localStudio');
+    const creatorRoute=window.location.hash==='#creator';
+    if(!creatorRoute){
+      sessionStorage.removeItem('ishverseCreatorMode');
+      if(panel){
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden','true');
+        panel.style.setProperty('display','none','important');
+        panel.style.setProperty('visibility','hidden','important');
+        panel.style.setProperty('pointer-events','none','important');
+      }
+    }else if(panel){
+      panel.style.removeProperty('display');
+      panel.style.removeProperty('visibility');
+      panel.style.removeProperty('pointer-events');
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',guardCreatorStudio,{once:true});
+  else guardCreatorStudio();
+  window.addEventListener('hashchange',guardCreatorStudio);
 })();
